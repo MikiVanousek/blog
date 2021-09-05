@@ -27,6 +27,13 @@ HTML defines a long list of available inline tags, a complete list of which can 
 
 Most of these elements are styled by browsers with few modifications on our part.
 
+## Latex
+You can now write latex inline equations like  $x^3 + \frac12 + \lim{x^n}_n^3 p$
+
+You can also create line equations.
+$$x^3 + \frac12 + \lim_{n \rightarrow 3}{x^n}$$
+
+You can still write \$.
 ## Heading
 
 Vivamus sagittis lacus vel augue rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
