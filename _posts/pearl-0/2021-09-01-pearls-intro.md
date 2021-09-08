@@ -46,3 +46,14 @@ You need to hit 5.5 on your project to pass. You need all tests to be above 5.0,
 You can retake up to 3 tests and remake excercieses during week 10. 
 
 You may never publish or share your code with anyone. Talking about assignments is fine, but never send code!
+
+In a processor, elements (memorry, adders, multipliers...) are made out of logic gates (transistors).
+If we have a cuircit with multiple arithmetic operators and the ability to swith between them, it iscalled ALU - arithmetic logic unit.
+
+The data is coming from:
+ - registers (small, fast)
+ - memory (large, slow)
+ - outside world
+
+Flip flop is the smallest memory element avalible.
+![flip-flop](flip-flop.png)
