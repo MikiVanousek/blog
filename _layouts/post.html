@@ -6,7 +6,8 @@ layout: default
 <script>
 MathJax = {
   tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']]
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
   },
   svg: {
     fontCache: 'global'
@@ -15,8 +16,6 @@ MathJax = {
 </script>
 <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
-<!-- add vanousek css style -->
-<link rel="stylesheet" href="/blog/all.css">
 
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
