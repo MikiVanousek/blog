@@ -9,7 +9,7 @@ Follow this on your own risk!
 
 You need adb and fastboot installed to follow.
 
-Edit: I later disovered the location stopped working on my device.
+Edit 2: Location is now working as well. Everything is working.
 
 # Root your system with magisk
  - Connect your phone to your PC
@@ -42,9 +42,12 @@ magisk.zip
    - Settings Storage
    - Google Play Services
  - Reboot your device
- - Open XPrivacyLua app and check Google Play Services
+ - Open XPrivacyLua app and check Google Play Services, expand the item and uncheck 'Get Location'
+   and 'Get Sensors'
  - Clear storage for Google Play Services and Google Play in Settings -> Apps
 
-Congratulations, you should now be able to pass the Safetynet. Please, let me know on XDA if it worked for you! This is my first contribution to this community and I am generally curious as to how many people it might help. 
+Congratulations, you should now be able to pass the Safetynet.
+Please, let me know [on XDA](https://forum.xda-developers.com/t/rom-11-0-0-alioth-aliothin-arrowos-11-0-official-weekly.4279481/post-85599629) if it worked for you!
+This is my first contribution to this community, and I am generally curious as to how many people it might help. 
 
-If it did not work or you do not understand something, also let me know and I will try to fix it... 
+If it did not work or, you do not understand something, also let me know and I will try to fix it... 
