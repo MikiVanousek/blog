@@ -85,12 +85,25 @@ $$ A + B = \begin{pmatrix}
  a_{21}+b_{21} & a_{22}+b_{22}  \\
 \end{pmatrix} $$
 
-- scalar multiplicstion:
+- scalar multiplications:
+
 $$ xA =
 \begin{pmatrix}
  xa_{11} & xa_{12} \\
  xa_{21} & xa_{22} \\
 \end{pmatrix}$$
+
+- transpose $m \times n$ matrix $A$
+
+$$ (A^t)_{ij} = A_{ji} $$
+
+   - (aA + bB)^T = aA^t + bB^t
+
+**Symmetric matrix** is a matrix A such that $A^t = A \Leftrightarrow A_{ij} = A_{ji}$
+
+**Diagonal matrix** is a matrix where $A_{ij} = 0 \forall i \neq j$ 
+
+**Trace** of an $n \times n$ matrix $A$: $tr(A) = \sum_{i=1}^n A_{ii}$
 
 ## Fields
 Field is a set for which addition and multiplication are defined, so that for:
@@ -107,10 +120,21 @@ Field is a set for which addition and multiplication are defined, so that for:
    5. distributivity of multiplication over adition: 
     $a(b+c) = ab + ac$
 
+## Polynomials in $P_n(\mathbb R)$
+A polynomail of degree $n$ with coefficients $a_0, a_1 ... + a_n \in \mathbb R$:
+
+$$ f(x) = a_n x^n + a_{n-1} x^{n-1} ... a_0$$
+$$ a \neq 0$$
+
+Degree of $0$ is $-1$.
+
+Set of all polynomials is a vector space.
+
 ## Vector spaces
-A vector space is made up of a set $V$ over field $F$ and 2 operations:
+A vector space (VS) is made up of a set $V$ over field $F$ and 2 operations:
  - vector addition (VA): $\forall u, v \in V: u+v \in V$
  - scalar multiplication (SM): $\forall u \in V: c\in F, cu \in V$  
+We say $V$ is closed with respekt to VA and SM.
 
 All of the following properties must hold $\forall u,v,w \in V; a,b\in F$:
  1. commutativity of VA:  
@@ -130,12 +154,88 @@ All of the following properties must hold $\forall u,v,w \in V; a,b\in F$:
  8. distributivity of SM with respect to field addition:  
   $(a+b)u = au + bu$
 
-## Polynomials in $P_n(\mathbb R)$
-A polynomail of degree $n$ with coefficients $a_0, a_1 ... + a_n \in \mathbb R$:
+## Subspaces
+If $V$ is a VS over $F$, $W \subset V$ is a subspace if $W$ is a VS with VA and SM defined
+as in $V$.
+These conditions must hold $\forall x, y \in W, c \in F:
+ - a.  $0 \in W$
+ - b. $x+y \in W$
+ - c. $ cx \in W$
 
-$$ f(x) = a_n x^n + a_{n-1} x^{n-1} ... a_0$$
-$$ a \neq 0$$
+## Linear systems
+You can represent systems of $n$ linear equations with $n$ variables as a $n\times
+n$ matrix:
 
-Degree of $0$ is $-1$.
+$$
+\begin{array}{c c c}
+1a_1 &+3a_2 &-5a_3 &=1\\
+0a_1 &+1a_2 &+2a_3 &=0\\
+4a_1 &-3a_2 &-5a_3 &=2\\
+\end{array}
+\qquad
+\begin{bmatrix}
+1 & 2 & 5 & 1\\
+0 & 1 & 2 & 0\\
+4 &-3 &-5 & 2\\
+\end{bmatrix}
+$$
 
-Set of all polynomials is a vector space.
+Elementary operations (the solution of the linear system represented by the matrix does not change):
+ - **interchange** 2 rows
+ - **multiply** a row by non-zero value
+ - **replace** a row with sum of itself and a multiple of another row
+
+### Gausian elimination
+ - in the leftmost non-zero column pick a pivot $p$
+ - place row where the pivot is in the upper-most position that did not have a pivot yet
+ - multiply the row by $\frac 1 p$ so the pivot becomes $1$
+ - use pivot to eliminate all entries in this column other than itself
+ - repeat until you run out of pivots  
+ We are left with a **cannonical form** of a matrix (staircase form).
+
+## Linear combination of vectors
+Let $V$ be a VS over $F$ and $S \subset V$. Then $v \in V$ is a linear combination of vectors in S, if:
+
+$$
+\exists u_1, u_2 ... u_n \in S; a_1, a_2 ... a_n \in F: \sum_{i=1}^n a_i u_i = v
+$$
+
+The equation of a plane through noncollinear points $A,B,C$: $x = A + s(B \setminus A) + t(C \setminus A); s, t \in \mathbb R$
+
+In the special case when $A$ is zero (the plane is subspace of $R^3$): $x = sB + rC
+
+### Span
+Let $V$ be VS over $F$, $S \neq \emptyset, S \\subseteq V$. Then span of $S$ denoted $span(S)$ is
+the set of all linear combinations of the vectors in $S$. 
+
+By convention: $span(\emptyset) = \\{0\\}$
+
+If $span(S)=P$ we say **$S$ generates $P$** 
+
+## Linear dependence
+Subset $S = \\{u_1...u_n\\}$ of VS $V$ is called linearly dependent
+if there exist scalars $a_1 ... a_n$ **not all zero** such that:
+$\sum a_i u_i = 0$.
+This is equivalent to one of the vectors being a linear combination of the others.
+
+Trivial representation of 0: $0 = \sum 0u_i$
+
+Nontrivial representation of zero implies linear dependence.
+
+If $0 \in S$, $S$ is linearly dependent.
+
+If subset is not linearly dependent, it is linearly independent (trivial representation of zero is the only representation.
+In any VS $\emptyset$ and $\\{u\\}$ are linearly independent.
+
+If no proper subset of $S$ generates $S$, it must be linearly independent.
+
+## Bases and dimension
+If $S$ generates subspace $W$ and no subset of $S$ generates $W$,
+then $S$ must be linearly independent. Every vector in $W$ can be represented as exactly one linear combination of vectors in $S$.
+
+A basis $\beta$ of $V$ is a linearly independent set of vectors that generates V.
+
+In $F^n$ the set of vectors $(1, 0...0), (0,1..0) ... (0,0...1)$ is called standard basis.
+
+In $P_n(F)$ we call $\\{1, x, x^2...x^n\\}$ the standard basis.
+
