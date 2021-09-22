@@ -43,6 +43,15 @@ Redundant information in databases causes insertion and update issues.
 This can be solved by splitting the table into
 
 
+## Modeling 
+ 1. observing the real world, collecting requirements
+ 2. converting the requirements into a data model
+   - use the Grady Bush methodology - identify nouns (entity) and verbs ( relationships)
+   - unified modeling language (UML)
+   - add multiplicity (one to one, may to one, many to many) to every relationship
+ 3. deriving the table structure from the data model
+
+
 ## SQL
 SQL stand for Structured Query Language.
 
@@ -57,7 +66,7 @@ and produce tables as outputs.
 
 data query language (DQL) commands:
  - SELECT {DISTINCT} [columns] {AS alias} from [tables]
-   - you can use multiple SELECT statements and join them with UNION {ALL}
+   - you can use multiple SELECT statements and join them with set operator
  - WHERE [condition]
    - you can use logical operators AND, OR, NOT in the condition
    - you can also use IS NULL and IS NOT NULL
@@ -107,11 +116,11 @@ END;
  and /* ... */ for multi line
  - arithmetic operators: +, -, *, /, %
  - comparisons: =, >, <, >, >=, <=, <>
+ - set operators: UNION, INTERSECT, EXCEPT
  - logical operators:
    - ALL, SOME/ANY, EXISTS
    - IN, BETWEEN, LIKE
    - AND, OR, NOT
-
 ## Constraints
  - specified when the table is created or altered  
  
