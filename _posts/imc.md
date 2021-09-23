@@ -8,7 +8,7 @@ date: 210907
 
 Introduction to Math (IM) will teach you bascis in set theory, logic, combinatorics, precise formulation of statments, logical reasonaing and construction of mathematical proofs.
 All these concepts will be vital in future courses!
-
+ 
 Course plan:
  - week 1 - Sets and Logic
  - week 2 - Proofs
