@@ -117,3 +117,31 @@ Conditional statement $p \rightarrow q$ has converse statement $q \rightarrow p$
     - induction step: we prove, that given induction hypothesis, $S(n+1)$ also holds
     - $S(1) \land (S(n) \rightarrow S(n+1)) \Rightarrow S(n) \forall n \in \mathbb{N}$
     - conclusion
+
+
+# Counting
+**Heuristic** is a non-perfect model with trade off between optimality and speed.
+
+**Permutation** of $n$ objects is their possible ordering. The number of 
+permutations of $k$ objects out of a set of $n$ objects is 
+$P(n, k) = \frac{n!}{(n-r)!}$.
+
+**Combination** of $n$ distinct elements is an unordered subset of $r$ elements,
+where $0 \leq r \leq n$. It is: 
+
+$$C(n, r) = \begin{pmatrix} n \\ r \end{pmatrix} = = \frac {P(n,r)} {r!} = \frac {n!} {r!*(n-r)!}$$
+
+## Sum Rule
+If $A$ and $B$ are finite **disjoint** ($A \cap B = \emptyset$) sets, then $|A \cup B| = |A| + |B|$.
+
+
+## Principle of of inclusion exclusion
+If $A$ and $B$ are not disjoint $|A \cup B| = |A| + |B| \ |A \cap B|$.
+
+
+## Product Rule
+If $A$ and $B$ are finite sets there are $|A| * |B|$ pairs $(a, b); a \in A, b \in B$
+
+## Newton's binomial theorem
+
+$$ (x+y)^n = \sum_{i=0}^n \begin{pmatrix} n \\ i \end{pmatrix} x^i y^{n-i} $$

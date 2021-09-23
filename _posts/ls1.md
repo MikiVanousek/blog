@@ -269,7 +269,7 @@ In $P_n(F)$ we call $\\{1, x, x^2...x^n\\}$ the standard basis.
 
 
 ### Other theorems
- - Let $\beta$ be a basis for a VS $V$. 
+ - Let $V$ be a VS and $\beta \subseteq V$. 
  Then $\beta$ is a basis for V if on only if 
  each $v\in V$ can be uniquely expressed as 
  a linear combination of vectors of $\beta$. 

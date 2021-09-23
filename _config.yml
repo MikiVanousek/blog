@@ -2,6 +2,7 @@
 title:               Miki Vanousek's blog
 tagline:             
 description:         'You can find my notes here.'
+domain:              mikulasvanousek.github.io
 baseurl:             /blog
 url:                 https://mikulasvanousek.github.io
 paginate:            5
