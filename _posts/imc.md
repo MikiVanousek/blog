@@ -55,10 +55,10 @@ Operations:
  - complement of $S$ with respect to universal set: $\overline{S} = U \setminus S$
  - cardinality (the number of elements) of $S$: $\|S\|$
 
-Minimum of the set: $min(S) = s \in S \leftrightarrow \forall x \in S:s \leq x$ 
-Infimum of the set: $inf(S) = max(\\{i; \forall x \in S: i \leq x\\})$ 
-Maximum of the set: $max(S) = s \in S \leftrightarrow \forall x \in S:s \geq x$ 
-Supremum of the set: $sup(S) = min(\\{s; \forall x \in S: s \geq x\\})$ 
+Minimum of the set: $min(S) = s \in S \leftrightarrow \forall x \in S:s \leq x$   
+Infimum of the set: $inf(S) = max(\\{i; \forall x \in S: i \leq x\\})$   
+Maximum of the set: $max(S) = s \in S \leftrightarrow \forall x \in S:s \geq x$   
+Supremum of the set: $sup(S) = min(\\{s; \forall x \in S: s \geq x\\})$   
 
 You can use membership tables to construct Venn Diagrams.
 
