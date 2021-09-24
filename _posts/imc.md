@@ -129,7 +129,7 @@ $P(n, k) = \frac{n!}{(n-r)!}$.
 **Combination** of $n$ distinct elements is an unordered subset of $r$ elements,
 where $0 \leq r \leq n$. It is: 
 
-$$C(n, r) = \begin{pmatrix} n \\ r \end{pmatrix} = = \frac {P(n,r)} {r!} = \frac {n!} {r!*(n-r)!}$$
+$$C(n, r) = \begin{pmatrix} n \\ r \end{pmatrix} = \frac {P(n,r)} {r!} = \frac {n!} {r!*(n-r)!}$$
 
 ## Sum Rule
 If $A$ and $B$ are finite **disjoint** ($A \cap B = \emptyset$) sets, then $|A \cup B| = |A| + |B|$.
