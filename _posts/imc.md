@@ -139,7 +139,7 @@ If $A$ and $B$ are finite **disjoint** ($A \cap B = \emptyset$) sets, then $|A \
 
 
 ## Principle of of inclusion exclusion
-If $A$ and $B$ are not disjoint $|A \cup B| = |A| + |B| \ |A \cap B|$.
+If $A$ and $B$ are not disjoint $|A \cup B| = |A| + |B| \setminus |A \cap B|$.
 
 
 ## Product Rule
