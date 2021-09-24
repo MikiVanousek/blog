@@ -112,7 +112,7 @@ Conditional statement $p \rightarrow q$ has converse statement $q \rightarrow p$
  3. proof by contradiction
  4. mathematical induction
     - we are proving a predicate $S(n);n\in \mathbb N$
-    - basis step: $S(0)$ is true
+    - basis step: $S(1)$ is true
     - induction hypothesis: $\exists k; S(k)$ is true
     - induction step: we prove, that given induction hypothesis, $S(n+1)$ also holds
     - $S(1) \land (S(n) \rightarrow S(n+1)) \Rightarrow S(n) \forall n \in \mathbb{N}$
