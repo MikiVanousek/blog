@@ -51,7 +51,7 @@ Notation:
 Operations:
  - set union: $\cup$
  - set intersection: $\cap$
- - difference (order must be given by parentheses)$: $\setminus$
+ - difference (order must be given by parentheses): $\setminus$
  - complement of $S$ with respect to universal set: $\overline{S} = U \setminus S$
  - cardinality (the number of elements) of $S$: $\|S\|$
 
