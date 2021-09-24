@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<!-- add vanousek css style -->
+<link rel="stylesheet" href="/blog/all.css">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Pearl 0 - Computer Architecture &middot; Miki Vanousek's blog
+    
+  </title>
+
+  
+  <link rel="canonical" href="https://mikulasvanousek.github.io/blog/dra/pearl-0/">
+  
+
+  <link rel="stylesheet" href="https://mikulasvanousek.github.io/blog/public/css/poole.css">
+  <link rel="stylesheet" href="https://mikulasvanousek.github.io/blog/public/css/syntax.css">
+  <link rel="stylesheet" href="https://mikulasvanousek.github.io/blog/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://mikulasvanousek.github.io/blog/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="https://mikulasvanousek.github.io/blog/public/favicon.ico">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="https://mikulasvanousek.github.io/blog/atom.xml">
+
+  
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>You can find my notes here.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="https://mikulasvanousek.github.io/blog/">Home</a>
+
+    
+
+    
+    
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="https://mikulasvanousek.github.io/blog/about/">Miki Vanoušek</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+
+    <a class="sidebar-nav-item" href="/archive/v1.1.0.zip">Download</a>
+    <a class="sidebar-nav-item" href="">GitHub project</a>
+    <span class="sidebar-nav-item">Currently v1.1.0</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2021. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/blog/" title="Home">Miki Vanousek's blog</a>
+            <small></small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <!-- the two sripts add latex support -->
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+
+<div class="post">
+  <h1 class="post-title">Pearl 0 - Computer Architecture</h1>
+  <span class="post-date">03 Jan 1970</span>
+  <p>CS is about compuuters no more than astronomy is about telescopes.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Computer is an electronic information processing machine which is controlled by a sequence of coded instrucitons.
+</code></pre></div></div>
+
+<p>Computers changed a lot over the years, but fundamentaly work the same.</p>
+
+<p>We will be working with arduinos.</p>
+
+<p>Analog signals has (infinitely) many possilbe levels. Most real world quantities are analog - temperature, distance, time, voltage.</p>
+
+<p>Digital signal has limited number of levels, often 0/1, also low/high.
+Small amount of distortion does no harm, so accuracy is easily preserved.</p>
+
+<p>To interpret binary information we need to agree about encodings - ASCII, int, jpeg, mp3, etc.</p>
+
+<p>You can write numbers in binary and other bases and convert between them. This ability will be tested.</p>
+
+<p>There are multiple ways negative numbers are represented in binary.</p>
+
+<p>Computers are made of logical gates.</p>
+<ul>
+  <li>A and B $AB$</li>
+  <li>A or B $A + B$</li>
+  <li>not A $\overline{A}</li>
+  <li>$AB = BA$</li>
+  <li>$A+B = B+A$</li>
+  <li>$C (A + B) = CA + CB$</li>
+  <li>DeMorgan’s theorem: $\overline{AB} = \overline{A} + \overline{B}$</li>
+  <li>$\overline{A}A = 0$</li>
+</ul>
+
+
+</div>
+
+
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script src='/blog/public/js/script.js'></script>
+  </body>
+</html>

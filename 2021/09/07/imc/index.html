@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<!-- add vanousek css style -->
+<link rel="stylesheet" href="/blog/all.css">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Introduction To Math And Calculus &middot; Miki Vanousek's blog
+    
+  </title>
+
+  
+  <link rel="canonical" href="https://mikulasvanousek.github.io/blog/2021/09/07/imc/">
+  
+
+  <link rel="stylesheet" href="https://mikulasvanousek.github.io/blog/public/css/poole.css">
+  <link rel="stylesheet" href="https://mikulasvanousek.github.io/blog/public/css/syntax.css">
+  <link rel="stylesheet" href="https://mikulasvanousek.github.io/blog/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://mikulasvanousek.github.io/blog/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="https://mikulasvanousek.github.io/blog/public/favicon.ico">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="https://mikulasvanousek.github.io/blog/atom.xml">
+
+  
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>You can find my notes here.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="https://mikulasvanousek.github.io/blog/">Home</a>
+
+    
+
+    
+    
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="https://mikulasvanousek.github.io/blog/about/">Miki Vanoušek</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+
+    <a class="sidebar-nav-item" href="/archive/v1.1.0.zip">Download</a>
+    <a class="sidebar-nav-item" href="">GitHub project</a>
+    <span class="sidebar-nav-item">Currently v1.1.0</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2021. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/blog/" title="Home">Miki Vanousek's blog</a>
+            <small></small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <!-- the two sripts add latex support -->
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+
+<div class="post">
+  <h1 class="post-title">Introduction To Math And Calculus</h1>
+  <span class="post-date">07 Sep 2021</span>
+  <h1 id="introduction">Introduction</h1>
+<h2 id="introduction-to-math">Introduction To Math</h2>
+
+<p>Introduction to Math (IM) will teach you bascis in set theory, logic, combinatorics, precise formulation of statments, logical reasonaing and construction of mathematical proofs.
+All these concepts will be vital in future courses!</p>
+
+<p>Course plan:</p>
+<ul>
+  <li>week 1 - Sets and Logic</li>
+  <li>week 2 - Proofs</li>
+  <li>week 3 - Combinatorics</li>
+</ul>
+
+<p>By the end of the course, you should be able to:</p>
+<ul>
+  <li>work with elemetary properties of sets and lgoic</li>
+  <li>construct elemetary proofs using basic techiques</li>
+  <li>work with elemetary properties of combinatorics</li>
+</ul>
+
+<h2 id="exam-rules">Exam Rules</h2>
+<p>There will be two midterm tests:</p>
+<ul>
+  <li>IM (1h)</li>
+  <li>Calculus (2h)
+These tests will be independet, but you should still have the prior knowledge.
+No notes and electronic devices.</li>
+</ul>
+
+<p>In the 10th week there will be an exam from all material.</p>
+
+<p>You will have to complete and pass a case study assignment to pass the course (there is some option to repair).</p>
+
+<p>See <a href="https://canvas.utwente.nl/courses/9008/pages/intromath-description-topics-educational-targets-examination-rules?module_item_id=257997">canvas page</a> for more detail.</p>
+
+<h1 id="sets">Sets</h1>
+<p>Set is a well-defined <strong>unordered</strong> collection of <strong>distinct</strong> elements.
+It is denoted within curly brcktes in one of these ways:</p>
+<ul>
+  <li>list of all elemets $\{1,2,3,4,5,6\}$</li>
+  <li>pattern $\{1,2,3…6\}$</li>
+  <li>properties $\{ n|n \in \mathbb{N}; 1 \leq n \leq 9 \}$</li>
+  <li>intervals $\{x \in \mathbb{R}; A \leq x &lt; B \} \Leftrightarrow [A,B)$</li>
+</ul>
+
+<p>Notation:</p>
+<ul>
+  <li>$1$ is an element of set $S$: $1 \in S$</li>
+  <li>$1$ is not an element of set $S$: $1 \notin S$</li>
+  <li>$S$ owns $1$: $S \ni 1$</li>
+  <li>$\{1, 2\}$ is a subset of $\{1,2,3\}$: $\{1,2\} \subseteq \{1,2,3\}$</li>
+  <li>$\{1, 2\}$ is a proper subset of $\{1,2,3\}$: $\{1,2\} \subset \{1,2,3\}$</li>
+  <li>empty set: $\emptyset$</li>
+</ul>
+
+<p>Operations:</p>
+<ul>
+  <li>set union: $\cup$</li>
+  <li>set intersection: $\cap$</li>
+  <li>difference (order must be given by parentheses): $\setminus$</li>
+  <li>complement of $S$ with respect to universal set: $\overline{S} = U \setminus S$</li>
+  <li>cardinality (the number of elements) of $S$: $|S|$</li>
+</ul>
+
+<p>Minimum of the set: $min(S) = s \in S \leftrightarrow \forall x \in S:s \leq x$ <br />
+Infimum of the set: $inf(S) = max(\{i; \forall x \in S: i \leq x\})$ <br />
+Maximum of the set: $max(S) = s \in S \leftrightarrow \forall x \in S:s \geq x$ <br />
+Supremum of the set: $sup(S) = min(\{s; \forall x \in S: s \geq x\})$</p>
+
+<p>You can use membership tables to construct Venn Diagrams.</p>
+
+<p>Summation is denoted in the following manner:</p>
+
+\[1+2+3+4...n = \sum_{i=1}^n i\]
+
+<p>In a similiar manner, repeated union:</p>
+
+\[A_1 \cup A_2 \cup A_3 \leftrightarrow \bigcup_{i=1}^3 A_i\]
+
+<h2 id="sets-of-numbers">Sets of numbers</h2>
+<ul>
+  <li>natural numbers: $\mathbb{N}$</li>
+  <li>integers: $\mathbb{Z}$</li>
+  <li>rational numbers: $\mathbb{Q}$</li>
+  <li>real numbers: $\mathbb{R}$</li>
+</ul>
+
+<p><a href="https://canvas.utwente.nl/courses/9008/pages/micro-lectures-week-1">See Canvas</a> for the microlectures.</p>
+
+<h1 id="logic">Logic</h1>
+<p>Proposition is a statement whose truth can be objectivelly determined as either ‘true’ or ‘false’.</p>
+
+<p>Predicate is a statement that can contain variables that inflence its truth value.</p>
+
+<p>Tautology is a statement that is always true.<br />
+Contradiction is a statement that is always false.</p>
+
+<p>Operators:</p>
+<ul>
+  <li>and: $\land$</li>
+  <li>or: $\lor$</li>
+  <li>not: $\neg$</li>
+  <li>implication: $\rightarrow$</li>
+  <li>logical implication: $\Rightarrow$</li>
+  <li>equivalence: $\leftrightarrow$</li>
+  <li>logical equivalence: $\Leftrightarrow$</li>
+  <li>for all: $\forall$</li>
+  <li>exists: $\exists$</li>
+</ul>
+
+<p>You can use truth tables to determine equivalency.</p>
+
+<h1 id="proofs">Proofs</h1>
+<p><strong>Lemma</strong> is and intermidiary result.</p>
+
+<p>Conditional statement $p \rightarrow q$ has converse statement $q \rightarrow p$.</p>
+
+<h2 id="proof-techniques">Proof techniques</h2>
+<ol>
+  <li>proof by example
+    <ul>
+      <li>prepositions starting with $\exists$ can be proved by an example</li>
+      <li>prepositions starting with $\forall$ can be disproved by a counter-example</li>
+    </ul>
+  </li>
+  <li>proof by cases</li>
+  <li>proof by contradiction</li>
+  <li>mathematical induction
+    <ul>
+      <li>we are proving a predicate $S(n);n\in \mathbb N$</li>
+      <li>basis step: $S(1)$ is true</li>
+      <li>induction hypothesis: $\exists k; S(k)$ is true</li>
+      <li>induction step: we prove, that given induction hypothesis, $S(n+1)$ also holds</li>
+      <li>$S(1) \land (S(n) \rightarrow S(n+1)) \Rightarrow S(n) \forall n \in \mathbb{N}$</li>
+      <li>conclusion</li>
+    </ul>
+  </li>
+</ol>
+
+<h1 id="counting">Counting</h1>
+<p><strong>Heuristic</strong> is a non-perfect model with trade off between optimality and speed.</p>
+
+<p><strong>Permutation</strong> of $n$ objects is their possible ordering. The number of 
+permutations of $k$ objects out of a set of $n$ objects is 
+$P(n, k) = \frac{n!}{(n-r)!}$.</p>
+
+<p><strong>Combination</strong> of $n$ distinct elements is an unordered subset of $r$ elements,
+where $0 \leq r \leq n$. It is:</p>
+
+\[C(n, r) = \begin{pmatrix} n \\ r \end{pmatrix} = \frac {P(n,r)} {r!} = \frac {n!} {r!*(n-r)!}\]
+
+<h2 id="sum-rule">Sum Rule</h2>
+<p>If $A$ and $B$ are finite <strong>disjoint</strong> ($A \cap B = \emptyset$) sets, then $|A \cup B| = |A| + |B|$.</p>
+
+<h2 id="principle-of-of-inclusion-exclusion">Principle of of inclusion exclusion</h2>
+<p>If $A$ and $B$ are not disjoint $|A \cup B| = |A| + |B| \setminus |A \cap B|$.</p>
+
+<h2 id="product-rule">Product Rule</h2>
+<p>If $A$ and $B$ are finite sets there are $|A| * |B|$ pairs $(a, b); a \in A, b \in B$</p>
+
+<h2 id="newtons-binomial-theorem">Newton’s binomial theorem</h2>
+
+\[(x+y)^n = \sum_{i=0}^n \begin{pmatrix} n \\ i \end{pmatrix} x^i y^{n-i}\]
+
+</div>
+
+
+<div class="related">
+  <h2>Related posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/blog/2021/09/20/pearl-010/">
+            Pealr 010 - The Database Pearl
+            <small>20 Sep 2021</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/blog/2021/09/13/ca/">
+            Cultural Awareness
+            <small>13 Sep 2021</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/blog/2021/09/08/root-arrow/">
+            Root With Magdisk And TWRP Without Reinstalling System And Fix Safetynet
+            <small>08 Sep 2021</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script src='/blog/public/js/script.js'></script>
+  </body>
+</html>

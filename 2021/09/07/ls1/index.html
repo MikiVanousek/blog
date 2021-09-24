@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<!-- add vanousek css style -->
+<link rel="stylesheet" href="/blog/all.css">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Linear Structures 1 &middot; Miki Vanousek's blog
+    
+  </title>
+
+  
+  <link rel="canonical" href="https://mikulasvanousek.github.io/blog/2021/09/07/ls1/">
+  
+
+  <link rel="stylesheet" href="https://mikulasvanousek.github.io/blog/public/css/poole.css">
+  <link rel="stylesheet" href="https://mikulasvanousek.github.io/blog/public/css/syntax.css">
+  <link rel="stylesheet" href="https://mikulasvanousek.github.io/blog/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://mikulasvanousek.github.io/blog/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="https://mikulasvanousek.github.io/blog/public/favicon.ico">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="https://mikulasvanousek.github.io/blog/atom.xml">
+
+  
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>You can find my notes here.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="https://mikulasvanousek.github.io/blog/">Home</a>
+
+    
+
+    
+    
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="https://mikulasvanousek.github.io/blog/about/">Miki Vanoušek</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+
+    <a class="sidebar-nav-item" href="/archive/v1.1.0.zip">Download</a>
+    <a class="sidebar-nav-item" href="">GitHub project</a>
+    <span class="sidebar-nav-item">Currently v1.1.0</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2021. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/blog/" title="Home">Miki Vanousek's blog</a>
+            <small></small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <!-- the two sripts add latex support -->
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+
+<div class="post">
+  <h1 class="post-title">Linear Structures 1</h1>
+  <span class="post-date">07 Sep 2021</span>
+  <h1 id="pólyas-4-steps-for-problem-solving">Pólya’s 4 Steps for problem-solving</h1>
+<ol>
+  <li>Getting Started
+    <ul>
+      <li>state the important information and summarize the problem</li>
+      <li>include diagram if possible</li>
+      <li>try to note all your assumptions</li>
+    </ul>
+  </li>
+  <li>Devise Plan
+    <ul>
+      <li>before trying to solve the problem, try to break it down into smaller pieces</li>
+    </ul>
+  </li>
+  <li>Execute Plan
+    <ul>
+      <li>explain each step</li>
+    </ul>
+  </li>
+  <li>Evaluate Solution
+    <ul>
+      <li>is the solution intuitive?</li>
+      <li>did you use all assumptions? what for?</li>
+    </ul>
+  </li>
+</ol>
+
+<h1 id="linear-algebra">Linear Algebra</h1>
+<h2 id="vector-in-mathbbrn">Vector in $\mathbb{R}^n$</h2>
+<p>They have n elements.
+They can be represented:</p>
+<ul>
+  <li>row vector $u = (x_1, x_2…x_n)$</li>
+  <li>column vector \(u = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}\)</li>
+  <li>their geometric representation</li>
+</ul>
+
+<p>Multidimensional vectors are used to store complex information.</p>
+
+<p>Operations:</p>
+<ul>
+  <li>addition: $u + v = (u_1 + v_1, u_2 + v_2 … u_n + v_n)$</li>
+  <li>scalar multiplication: $tu = (tu_1 + tu_2 … tu_n)$</li>
+  <li>is the solution intuitive?</li>
+  <li>did you use all assumptions? what for?</li>
+</ul>
+
+<h1 id="linear-algebra-1">Linear Algebra</h1>
+<h2 id="vector-in-mathbbrn-1">Vector in $\mathbb{R}^n$</h2>
+<p>They have n elements.
+They can be represented:</p>
+<ul>
+  <li>row vector $u = (x_1, x_2…x_n)$</li>
+  <li>column vector \(u = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}\)</li>
+  <li>their geometric representation</li>
+</ul>
+
+<p>Multidimensional vectors are used to store complex information.</p>
+
+<p>Operations:</p>
+<ul>
+  <li>addition: $u + v = (u_1 + v_1, u_2 + v_2 … u_n + v_n)$</li>
+  <li>is the solution intuitive?</li>
+  <li>did you use all assumptions? what for?</li>
+</ul>
+
+<h1 id="linear-algebra-2">Linear Algebra</h1>
+<h2 id="vector-in-mathbbrn-2">Vector in $\mathbb{R}^n$</h2>
+<p>They have n elemets.
+They can be represented:</p>
+<ul>
+  <li>row vector $u = (x_1, x_2…x_n)$</li>
+  <li>column vector \(u = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}\)</li>
+  <li>their geometric representation</li>
+</ul>
+
+<p>Multidimensional vecotrs are used to store complex information.</p>
+
+<p>Operations:</p>
+<ul>
+  <li>addition: $u + v = (u_1 + v_1, u_2 + v_2 … u_n + v_n)$</li>
+</ul>
+
+<p>Zero vector consists of all 0.</p>
+
+<h2 id="matrix-in-m_mtimes-nmathbbr">Matrix in $M_{m\times n}(\mathbb{R})$</h2>
+<p>A rectangular $m \times n$ matrix $A$ consists of $m$ rows and $n$ columns.</p>
+
+\[A = \begin{pmatrix} 
+ a_{11} &amp; ... &amp; a_{1j} &amp; ... &amp; a_{1n} \\
+ \vdots &amp;     &amp; \vdots &amp;     &amp; \vdots \\
+ a_{i1} &amp; ... &amp; a_{ij} &amp; ... &amp; a_{in} \\
+ \vdots &amp;     &amp; \vdots &amp;     &amp; \vdots \\
+ a_{m1} &amp; ... &amp; a_{mj} &amp; ... &amp; a_{mn} \\
+\end{pmatrix}\]
+
+<p>Operations:</p>
+<ul>
+  <li>addition ($A$ and $B$ must have the same dimension!):</li>
+</ul>
+
+\[A + B = \begin{pmatrix} 
+ a_{11}+b_{11} &amp; a_{12}+b_{12}  \\
+ a_{21}+b_{21} &amp; a_{22}+b_{22}  \\
+\end{pmatrix}\]
+
+<ul>
+  <li>scalar multiplications:</li>
+</ul>
+
+\[xA =
+\begin{pmatrix}
+ xa_{11} &amp; xa_{12} \\
+ xa_{21} &amp; xa_{22} \\
+\end{pmatrix}\]
+
+<ul>
+  <li>transpose $m \times n$ matrix $A$</li>
+</ul>
+
+\[(A^t)_{ij} = A_{ji}\]
+
+<ul>
+  <li>(aA + bB)^T = aA^t + bB^t</li>
+</ul>
+
+<p><strong>Symmetric matrix</strong> is a matrix A such that $A^t = A \Leftrightarrow A_{ij} = A_{ji}$</p>
+
+<p><strong>Diagonal matrix</strong> is a matrix where $A_{ij} = 0 \forall i \neq j$</p>
+
+<p><strong>Trace</strong> of an $n \times n$ matrix $A$: $tr(A) = \sum_{i=1}^n A_{ii}$</p>
+
+<h2 id="fields">Fields</h2>
+<p>Field is a set for which addition and multiplication are defined, so that for:</p>
+<ul>
+  <li>$\forall x,y \in F: x+y \in F, xy \in F$</li>
+  <li>$\forall a,b,c \in S$ all the the following properties must hold:
+    <ol>
+      <li>commutativity of A,M: <br />
+ $a+b = b+a$ and $a \cdot b = b \cdot a$</li>
+      <li>associativity of addition, multiplication (A,M): 
+ $(a+b) +c = a+(b+c)$ and $(ab)c = a(bc)$</li>
+      <li>identity A,M:<br />
+ $a+0 = a$ and $1a=a$</li>
+      <li>inverse of A,M:<br />
+ $a+(-a)=0$ and $\forall a \neq 0 \exists aa^{-1}=1$</li>
+      <li>distributivity of multiplication over adition: 
+ $a(b+c) = ab + ac$</li>
+    </ol>
+  </li>
+</ul>
+
+<h2 id="polynomials-in-p_nmathbb-r">Polynomials in $P_n(\mathbb R)$</h2>
+<p>A polynomail of degree $n$ with coefficients $a_0, a_1 … + a_n \in \mathbb R$:</p>
+
+<p>\(f(x) = a_n x^n + a_{n-1} x^{n-1} ... a_0\)
+\(a \neq 0\)</p>
+
+<p>Degree of $0$ is $-1$.</p>
+
+<p>Set of all polynomials is a vector space.</p>
+
+<h2 id="vector-spaces">Vector spaces</h2>
+<p>A vector space (VS) is made up of a set $V$ over field $F$ and 2 operations:</p>
+<ul>
+  <li>vector addition (VA): $\forall u, v \in V: u+v \in V$</li>
+  <li>scalar multiplication (SM): $\forall u \in V: c\in F, cu \in V$<br />
+We say $V$ is closed with respekt to VA and SM.</li>
+</ul>
+
+<p>All of the following properties must hold $\forall u,v,w \in V; a,b\in F$:</p>
+<ol>
+  <li>commutativity of VA:<br />
+  $u+v = v+u$</li>
+  <li>associativity of VA:<br />
+  $u +(v+w) = (u+v)+w$</li>
+  <li>identity element of VA:<br />
+  $0 + v=v$</li>
+  <li>inverse element of VA:<br />
+  $v + (-v) = 0$</li>
+  <li>compatibility of SM with field multiplication:<br />
+  $a(bv) = (ab)v$</li>
+  <li>identity element of SM:<br />
+  $1v=v$</li>
+  <li>distributivity of SM with respect ot VA:<br />
+  $a(u+w) = au + av$</li>
+  <li>distributivity of SM with respect to field addition:<br />
+  $(a+b)u = au + bu$</li>
+</ol>
+
+<h2 id="subspaces">Subspaces</h2>
+<p>If $V$ is a VS over $F$, $W \subset V$ is a subspace if $W$ is a VS with VA and SM defined
+as in $V$.
+These conditions must hold $\forall x, y \in W, c \in F:</p>
+<ul>
+  <li>a.  $0 \in W$</li>
+  <li>b. $x+y \in W$</li>
+  <li>c. $ cx \in W$</li>
+</ul>
+
+<h2 id="linear-systems">Linear systems</h2>
+<p>You can represent systems of $n$ linear equations with $n$ variables as a $n\times
+n$ matrix:</p>
+
+\[\begin{array}{c c c}
+1a_1 &amp;+3a_2 &amp;-5a_3 &amp;=1\\
+0a_1 &amp;+1a_2 &amp;+2a_3 &amp;=0\\
+4a_1 &amp;-3a_2 &amp;-5a_3 &amp;=2\\
+\end{array}
+\qquad
+\begin{bmatrix}
+1 &amp; 2 &amp; 5 &amp; 1\\
+0 &amp; 1 &amp; 2 &amp; 0\\
+4 &amp;-3 &amp;-5 &amp; 2\\
+\end{bmatrix}\]
+
+<p>Elementary operations (the solution of the linear system represented by the matrix does not change):</p>
+<ul>
+  <li><strong>interchange</strong> 2 rows</li>
+  <li><strong>multiply</strong> a row by non-zero value</li>
+  <li><strong>replace</strong> a row with sum of itself and a multiple of another row</li>
+</ul>
+
+<h3 id="gausian-elimination">Gausian elimination</h3>
+<ul>
+  <li>in the leftmost non-zero column pick a pivot $p$</li>
+  <li>place row where the pivot is in the upper-most position that did not have a pivot yet</li>
+  <li>multiply the row by $\frac 1 p$ so the pivot becomes $1$</li>
+  <li>use pivot to eliminate all entries in this column other than itself</li>
+  <li>repeat until you run out of pivots<br />
+ We are left with a <strong>cannonical form</strong> of a matrix (staircase form).</li>
+</ul>
+
+<h2 id="linear-combination-of-vectors">Linear combination of vectors</h2>
+<p>Let $V$ be a VS over $F$ and $S \subset V$. Then $v \in V$ is a linear combination of vectors in S, if:</p>
+
+\[\exists u_1, u_2 ... u_n \in S; a_1, a_2 ... a_n \in F: \sum_{i=1}^n a_i u_i = v\]
+
+<p>The equation of a plane through noncollinear points $A,B,C$: $x = A + s(B \setminus A) + t(C \setminus A); s, t \in \mathbb R$</p>
+
+<p>In the special case when $A$ is zero (the plane is subspace of $R^3$): $x = sB + rC</p>
+
+<h3 id="span">Span</h3>
+<p>Let $V$ be VS over $F$, $S \neq \emptyset, S \subseteq V$. Then span of $S$ denoted $span(S)$ is
+the set of all linear combinations of the vectors in $S$.</p>
+
+<p>By convention: $span(\emptyset) = \{0\}$</p>
+
+<p>If $span(S)=P$ we say <strong>$S$ generates $P$</strong></p>
+
+<h2 id="linear-dependence">Linear dependence</h2>
+<p>Subset $S = \{u_1…u_n\}$ of VS $V$ is called linearly dependent
+if there exist scalars $a_1 … a_n$ <strong>not all zero</strong> such that:
+$\sum a_i u_i = 0$.
+This is equivalent to one of the vectors being a linear combination of the others.</p>
+
+<p>Trivial representation of 0: $0 = \sum 0u_i$</p>
+
+<p>Nontrivial representation of zero implies linear dependence.</p>
+
+<p>If $0 \in S$, $S$ is linearly dependent.</p>
+
+<p>If subset is not linearly dependent, it is linearly independent (trivial representation of zero is the only representation.
+In any VS $\emptyset$ and $\{u\}$ are linearly independent.</p>
+
+<p>If no proper subset of $S$ generates $S$, it must be linearly independent.</p>
+
+<h2 id="bases-and-dimension">Bases and dimension</h2>
+<p>If $S$ generates subspace $W$ and no subset of $S$ generates $W$,
+then $S$ must be linearly independent. Every vector in $W$ can be represented as exactly one linear combination of vectors in $S$.</p>
+
+<p>A basis $\beta$ of $V$ is a linearly independent set of vectors that generates V.</p>
+
+<p>In $F^n$ the set of vectors $(1, 0…0), (0,1..0) … (0,0…1)$ is called standard basis.</p>
+
+<p>In $P_n(F)$ we call $\{1, x, x^2…x^n\}$ the standard basis.</p>
+
+<h3 id="the-replacement-theorem">The Replacement Theorem</h3>
+<p>Let $V$ be a VS generated by a set $G$ containing 
+ exactly $n$ vectors, and let $L$ be a linearly independent 
+ subset of $V$ containing exactly $m$ vectors. Then $m \leq n$
+ and there exsist $H \subseteq G$ containing exactly $n-m$ vecotors
+ such that $L \cup H$ generates $V$.</p>
+
+<h4 id="corollaries">Corollaries</h4>
+<ul>
+  <li>Let $V$ be a vecotr space having a finite basis. 
+ Then every basis has the same number of vectors.
+    <ul>
+      <li>If the number of vectos in basis is finite, we call
+VS <strong>finite-dimensional</strong>. We call it <strong>infinite-dimensional</strong>
+if it does not have finite basis.</li>
+      <li>The number of vectors in each basis of a finite-dimensional VS
+$V$ is called <strong>dimension</strong> and is denoted by $dim(V)$.
+        <ul>
+          <li>$dim(\{0\})=0$</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Let $V$ be a VS with dimension $n$:
+    <ul>
+      <li>Any generating set for V contains at least $n$ vectors 
+and generating set for $v$ that contains exactly $n$ vectors 
+is a basis for $V$.</li>
+      <li>Any linearly independent subset of $V$ that contains 
+exaclty $n$ vectos is a basis for $V$</li>
+      <li>Any linearly independent subset of $V$ can be extended to 
+a basis for $V$</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="other-theorems">Other theorems</h3>
+<ul>
+  <li>Let $V$ be a VS and $\beta \subseteq V$. 
+ Then $\beta$ is a basis for V if on only if 
+ each $v\in V$ can be uniquely expressed as 
+ a linear combination of vectors of $\beta$.</li>
+  <li>If a VS $V$ is generated by finite set $S$, 
+ then some subset of $S$ is a basis for $V$.</li>
+  <li>Let $W$ be s subspace for finite dimensional VS $V$. 
+ Then $dim(W) \leq dim(V)$ And $dim(V) = dim(W) \Leftrightarrow V = W$
+    <ul>
+      <li>Any basis for $W$ can be extended to basis for $V$.</li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+
+
+<div class="related">
+  <h2>Related posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/blog/2021/09/20/pearl-010/">
+            Pealr 010 - The Database Pearl
+            <small>20 Sep 2021</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/blog/2021/09/13/ca/">
+            Cultural Awareness
+            <small>13 Sep 2021</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/blog/2021/09/08/root-arrow/">
+            Root With Magdisk And TWRP Without Reinstalling System And Fix Safetynet
+            <small>08 Sep 2021</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script src='/blog/public/js/script.js'></script>
+  </body>
+</html>

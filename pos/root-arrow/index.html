@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<!-- add vanousek css style -->
+<link rel="stylesheet" href="/blog/all.css">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Root With Magdisk And TWRP Without Reinstalling System And Fix Safetynet &middot; Miki Vanousek's blog
+    
+  </title>
+
+  
+  <link rel="canonical" href="https://mikulasvanousek.github.io/blog/pos/root-arrow/">
+  
+
+  <link rel="stylesheet" href="https://mikulasvanousek.github.io/blog/public/css/poole.css">
+  <link rel="stylesheet" href="https://mikulasvanousek.github.io/blog/public/css/syntax.css">
+  <link rel="stylesheet" href="https://mikulasvanousek.github.io/blog/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://mikulasvanousek.github.io/blog/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="https://mikulasvanousek.github.io/blog/public/favicon.ico">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="https://mikulasvanousek.github.io/blog/atom.xml">
+
+  
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>You can find my notes here.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="https://mikulasvanousek.github.io/blog/">Home</a>
+
+    
+
+    
+    
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="https://mikulasvanousek.github.io/blog/about/">Miki Vanoušek</a>
+        
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+
+    <a class="sidebar-nav-item" href="/archive/v1.1.0.zip">Download</a>
+    <a class="sidebar-nav-item" href="">GitHub project</a>
+    <span class="sidebar-nav-item">Currently v1.1.0</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2021. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/blog/" title="Home">Miki Vanousek's blog</a>
+            <small></small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <!-- the two sripts add latex support -->
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+
+
+<div class="post">
+  <h1 class="post-title">Root With Magdisk And TWRP Without Reinstalling System And Fix Safetynet</h1>
+  <span class="post-date">03 Jan 1970</span>
+  <p>This tutorial is meant for Arrow os on alioth (Poco F3)! On other devices the steps might be different!</p>
+
+<p>Follow this on your own risk!</p>
+
+<p>You need adb and fastboot installed to follow.</p>
+
+<p>Edit 2: Location is now working as well. Everything is working.</p>
+
+<h1 id="root-your-system-with-magisk">Root your system with magisk</h1>
+<ul>
+  <li>Connect your phone to your PC</li>
+  <li>Download the <a href="https://github.com/topjohnwu/Magisk/releases/tag/v23.0">Magisk apk</a></li>
+  <li>Make a copy of the Magisk-v##.#.apk file with .zip extension. You should now have 2 files (.apk, .zip)</li>
+  <li>Download and flash <a href="https://forum.xda-developers.com/t/recovery-unofficial-twrp-3-5-1-20210702.4300189/">TWRP</a> - your system is going to stay intact</li>
+  <li>Boot to TWRP (adb reboot bootloader)</li>
+  <li>Upload the magisk.zip file
+ adb push <path to="" your="" magisk.zip="" file=""> /sdcard/Download/</path></li>
+  <li>In TWRP press first big button ‘Install’, go to Download and select 
+magisk.zip</li>
+  <li>In the next menu check ‘Skip Digest check before installing zip’ only! UNCHECK ‘Inject TWRP after install’</li>
+  <li>After the install, reboot to system. Install magisk.apk
+  adb install Magisk-v##.#.apk</li>
+  <li>When you open the Magisk app, it should say ‘Installed: <your version="">'</your></li>
+</ul>
+
+<h1 id="fixing-safetynet-with-magdisk">Fixing Safetynet with Magdisk</h1>
+
+<ul>
+  <li>Download the latest <a href="https://f-droid.org/en/packages/org.fdroid.fdroid/">fdroid apk</a></li>
+  <li>Install it with adb</li>
+  <li>In the F-Droid app find XPrivacyLua and install it</li>
+  <li>Download the latest <a href="https://github.com/kdrag0n/safetynet-fix/releases">safetynet-fix-v#.#.#.zip</a>.</li>
+  <li>In the settings of Magisk app check MagiskHide</li>
+  <li>In the Magisk app navigate to modules, ‘Install from storage’ and install the safetynet fix</li>
+  <li>In the Magisk module search find ‘Riru’, install it <strong>without rebooting</strong></li>
+  <li>In the same way install ‘Lsposed’, then reboot</li>
+  <li>Open Lsposed app, click ‘Modules’ -&gt; ‘XPrivacyLua’ -&gt; 3 dots in top right -&gt; ‘Hide’ -&gt; uncheck System apps</li>
+  <li>Now select:
+    <ul>
+      <li>System Framework</li>
+      <li>Settings Storage</li>
+      <li>Google Play Services</li>
+    </ul>
+  </li>
+  <li>Reboot your device</li>
+  <li>Open XPrivacyLua app and check Google Play Services, expand the item and uncheck ‘Get Location’
+and ‘Get Sensors’</li>
+  <li>Clear storage for Google Play Services and Google Play in Settings -&gt; Apps</li>
+</ul>
+
+<p>Congratulations, you should now be able to pass the Safetynet.
+Please, let me know <a href="https://forum.xda-developers.com/t/rom-11-0-0-alioth-aliothin-arrowos-11-0-official-weekly.4279481/post-85599629">on XDA</a> if it worked for you!
+This is my first contribution to this community, and I am generally curious as to how many people it might help.</p>
+
+<p>If it did not work or, you do not understand something, also let me know and I will try to fix it…</p>
+
+</div>
+
+
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script src='/blog/public/js/script.js'></script>
+  </body>
+</html>

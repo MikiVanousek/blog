@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://mikulasvanousek.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mikulasvanousek.github.io/blog/" rel="alternate" type="text/html" /><updated>2021-09-24T07:57:52+00:00</updated><id>https://mikulasvanousek.github.io/blog/feed.xml</id><title type="html">Miki Vanousek’s blog</title><subtitle>You can find my notes here.</subtitle><author><name>Miki Vanoušek</name><email>vanousekmikulas@gmail.com</email></author><entry><title type="html">Pealr 010 - The Database Pearl</title><link href="https://mikulasvanousek.github.io/blog/2021/09/20/pearl-010/" rel="alternate" type="text/html" title="Pealr 010 - The Database Pearl" /><published>2021-09-20T00:00:00+00:00</published><updated>2021-09-20T00:00:00+00:00</updated><id>https://mikulasvanousek.github.io/blog/2021/09/20/pearl-010</id><content type="html" xml:base="https://mikulasvanousek.github.io/blog/2021/09/20/pearl-010/">&lt;p&gt;How can we store data:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;in large volumes&lt;/li&gt;
+  &lt;li&gt;so it does not get lost or corrupted&lt;/li&gt;
+  &lt;li&gt;reliably available&lt;/li&gt;
+  &lt;li&gt;durably&lt;/li&gt;
+  &lt;li&gt;securely&lt;/li&gt;
+  &lt;li&gt;robustly&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Database (DB) resides on a database server.
+DB is managed by database management system (DBMS).
+End users controls applications, that query DBMS.&lt;/p&gt;
+
+&lt;p&gt;ANSI/SPARC architecture:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;disks&lt;/li&gt;
+  &lt;li&gt;physical schema&lt;/li&gt;
+  &lt;li&gt;conceptual schema&lt;/li&gt;
+  &lt;li&gt;external schemas&lt;/li&gt;
+  &lt;li&gt;apps&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Development process:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;information analyst makes an entity-relationship (ER) model&lt;/li&gt;
+  &lt;li&gt;database designer uses the DBMS to create the database&lt;/li&gt;
+  &lt;li&gt;database admin manages the DB and allows accesses&lt;/li&gt;
+  &lt;li&gt;application programmer queries the DB in the app&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;DB is made up of tables. Tables have attributes and records.&lt;/p&gt;
+
+&lt;p&gt;Key - collection of one or more attributes that determine a record in a table:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;primary key - unique for every record, every table needs one&lt;/li&gt;
+  &lt;li&gt;surrogate key - synthetic primary key&lt;/li&gt;
+  &lt;li&gt;candidate key - minimal group of columns that uniquely identifies every entry&lt;/li&gt;
+  &lt;li&gt;composite key - a key made up of more than one attribute&lt;/li&gt;
+  &lt;li&gt;foreign key - a primary key from another table used to reference an entry&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Foreign key&lt;/strong&gt; is an attribute, that is a primary key in another table.&lt;/p&gt;
+
+&lt;p&gt;Redundant information in databases causes insertion and update issues.
+This can be solved by splitting the table into&lt;/p&gt;
+
+&lt;h2 id=&quot;modeling&quot;&gt;Modeling&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;observing the real world, collecting requirements&lt;/li&gt;
+  &lt;li&gt;converting the requirements into a data model
+    &lt;ul&gt;
+      &lt;li&gt;use the Grady Bush methodology - identify nouns (entity) and verbs ( relationships)&lt;/li&gt;
+      &lt;li&gt;unified modeling language (UML)&lt;/li&gt;
+      &lt;li&gt;add multiplicity (one to one, may to one, many to many) to every relationship&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;deriving the table structure from the data model&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;sql&quot;&gt;SQL&lt;/h2&gt;
+&lt;p&gt;SQL stand for Structured Query Language.&lt;/p&gt;
+
+&lt;p&gt;It is a data definition language (DDL) and data manipulation language (DML).&lt;/p&gt;
+
+&lt;p&gt;In relational databases operations take tables as inputs
+and produce tables as outputs.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Selection&lt;/strong&gt; reduces the number of rows.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Projection&lt;/strong&gt; reduces the number of columns.&lt;/p&gt;
+
+&lt;p&gt;data query language (DQL) commands:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;SELECT {DISTINCT} [columns] {AS alias} from [tables]
+    &lt;ul&gt;
+      &lt;li&gt;you can use multiple SELECT statements and join them with set operator&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;WHERE [condition]
+    &lt;ul&gt;
+      &lt;li&gt;you can use logical operators AND, OR, NOT in the condition&lt;/li&gt;
+      &lt;li&gt;you can also use IS NULL and IS NOT NULL&lt;/li&gt;
+      &lt;li&gt;you can use [column] LIKE [pattern with wild cards % (any chars) and _ (1 char)]&lt;/li&gt;
+      &lt;li&gt;you can use [column] IN [multiple values]&lt;/li&gt;
+      &lt;li&gt;you can use [column] BETWEEN [value1] and [value2]&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;ORDER BY [columns] {ASC}/DES&lt;/li&gt;
+  &lt;li&gt;LIMIT [number]&lt;/li&gt;
+  &lt;li&gt;[table1] [INNER / LEFT / RIGHT / CROSS] [table2] ON [condition]
+    &lt;ul&gt;
+      &lt;li&gt;you can join a table onto itself by FROM [table] t1, [table] t2
+data manipulation language (DML) commands:&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;INSERT INTO [table]…
+    &lt;ul&gt;
+      &lt;li&gt;…([columns]) VALUES ([values])&lt;/li&gt;
+      &lt;li&gt;…FROM [table2] WHERE [condition]&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;UPDATE [table] SET [column1=value1…columnn=valuen]
+    &lt;ul&gt;
+      &lt;li&gt;you can use WHERE after&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;DELETE FROM [table] WHERE [condition]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;data definition language (DDL) commands:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;CREATE [DATABASE/TABLE] [name]&lt;/li&gt;
+  &lt;li&gt;DROP [DATABASE/TABLE] [name]&lt;/li&gt;
+  &lt;li&gt;ALTER TABLE [name]…
+    &lt;ul&gt;
+      &lt;li&gt;… ADD COLUMN [name] [data type]&lt;/li&gt;
+      &lt;li&gt;… DROP COLUMN [name]&lt;/li&gt;
+      &lt;li&gt;… MODIFY COLUMN [name] [data type] [constraint]&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;TRUNCATE&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;SELECT FUNCTION([column]) FROM [table] WHERE [condition]&lt;/li&gt;
+  &lt;li&gt;MIN&lt;/li&gt;
+  &lt;li&gt;MAX&lt;/li&gt;
+  &lt;li&gt;COUNT&lt;/li&gt;
+  &lt;li&gt;can also be used 
+  SELECT [column] count(id) FROM [table] GROUP BY [column]&lt;/li&gt;
+  &lt;li&gt;AVG&lt;/li&gt;
+  &lt;li&gt;SUM&lt;/li&gt;
+  &lt;li&gt;IFNULL&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;other syntax:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;CASE&lt;br /&gt;
+WHEN condition1 THEN result1&lt;br /&gt;
+WHEN condition2 THEN result2&lt;br /&gt;
+WHEN conditionN THEN resultN&lt;br /&gt;
+ELSE result&lt;br /&gt;
+END;&lt;/li&gt;
+  &lt;li&gt;comment with $-\ -$ (double-dash) for single line
+ and /* … */ for multi line&lt;/li&gt;
+  &lt;li&gt;arithmetic operators: +, -, *, /, %&lt;/li&gt;
+  &lt;li&gt;comparisons: =, &amp;gt;, &amp;lt;, &amp;gt;, &amp;gt;=, &amp;lt;=, &amp;lt;&amp;gt;&lt;/li&gt;
+  &lt;li&gt;set operators: UNION, INTERSECT, EXCEPT&lt;/li&gt;
+  &lt;li&gt;logical operators:
+    &lt;ul&gt;
+      &lt;li&gt;ALL, SOME/ANY, EXISTS&lt;/li&gt;
+      &lt;li&gt;IN, BETWEEN, LIKE&lt;/li&gt;
+      &lt;li&gt;AND, OR, NOT
+        &lt;h2 id=&quot;constraints&quot;&gt;Constraints&lt;/h2&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;specified when the table is created or altered&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CREATE TABLE [name] (  
+    [column 1] [datatype] [inline constraint], 
+    [column 2] [datatype] [inline constraint],  
+    ...  
+    [separate line constraint]
+    [separate line constraint]
+    ...
+);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;inline constraints:
+    &lt;ul&gt;
+      &lt;li&gt;NOT NULL&lt;/li&gt;
+      &lt;li&gt;DEFAULT [value]&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;separate line constraints
+    &lt;ul&gt;
+      &lt;li&gt;UNIQUE ([columns])&lt;/li&gt;
+      &lt;li&gt;PRIMARY KEY ([columns])&lt;/li&gt;
+      &lt;li&gt;FOREIGN KEY ([columns]) REFERENCES &lt;a href=&quot;[foreign key]&quot;&gt;foreign table&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;CHECK&lt;/li&gt;
+      &lt;li&gt;CREATE INDEX&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Miki Vanoušek</name><email>vanousekmikulas@gmail.com</email></author><summary type="html">How can we store data: in large volumes so it does not get lost or corrupted reliably available durably securely robustly</summary></entry><entry><title type="html">Cultural Awareness</title><link href="https://mikulasvanousek.github.io/blog/2021/09/13/ca/" rel="alternate" type="text/html" title="Cultural Awareness" /><published>2021-09-13T00:00:00+00:00</published><updated>2021-09-13T00:00:00+00:00</updated><id>https://mikulasvanousek.github.io/blog/2021/09/13/ca</id><content type="html" xml:base="https://mikulasvanousek.github.io/blog/2021/09/13/ca/">&lt;h1 id=&quot;culture&quot;&gt;Culture&lt;/h1&gt;
+&lt;p&gt;Acording to Edgar Schein, culture consits of layers, like onion.&lt;/p&gt;
+
+&lt;p&gt;Layers (from outer to inner):&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;artefacts - visible physical manifestatinos of the culture&lt;/li&gt;
+  &lt;li&gt;social norms and values - writen and unwriten desired behaviours&lt;/li&gt;
+  &lt;li&gt;basic assumptions - axioms norms and values are drive from&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;There are many definitions of culture, for example: the way in which a group of people solve problems.&lt;/p&gt;
+
+&lt;p&gt;Culture is learned programming and unnatural.&lt;/p&gt;
+
+&lt;p&gt;We identify with many different groups on different levels.
+Each is associated with one subculture we belong to.&lt;/p&gt;
+
+&lt;h2 id=&quot;communication&quot;&gt;Communication&lt;/h2&gt;
+
+&lt;p&gt;Communication is the exchange of meaning using the following steps:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;encoding&lt;/li&gt;
+  &lt;li&gt;transmition through a chanell&lt;/li&gt;
+  &lt;li&gt;decoding&lt;/li&gt;
+  &lt;li&gt;feedback (it is a loop)&lt;br /&gt;
+Our culture affects every single step, so intercultural communication introduces noise and
+causes misunderstanding.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;noise&quot;&gt;Noise&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;external - caused by the environment&lt;/li&gt;
+  &lt;li&gt;internal - emotions, biases&lt;/li&gt;
+  &lt;li&gt;cultural - differences in encoding and decoding protocols&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;topoi-model&quot;&gt;TOPOI Model&lt;/h2&gt;
+&lt;p&gt;There are 5 areas for potential misunderstanding:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;tongue (language) - verbal / nonverbal&lt;/li&gt;
+  &lt;li&gt;order - the world view&lt;/li&gt;
+  &lt;li&gt;person - the releationship (symmetrical / complementary)&lt;/li&gt;
+  &lt;li&gt;organization - way of doing things (social, profesional)&lt;/li&gt;
+  &lt;li&gt;intention &amp;amp; influence - needs and motives
+You can use this insight to find and resolve misunderstandings.
+Ask the 3 key intervention questions:&lt;/li&gt;
+  &lt;li&gt;What is my share in the misunderstanding?&lt;/li&gt;
+  &lt;li&gt;What is the other person’s share?&lt;/li&gt;
+  &lt;li&gt;What is the influence of social norms and values?&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;global-citizienship&quot;&gt;Global citizienship&lt;/h2&gt;
+&lt;p&gt;Global citizenship is the sense of belonging to the global community.
+Global citizenship comprises from these competencies:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;empathy and repect for diversity&lt;/li&gt;
+  &lt;li&gt;critical thinking&lt;/li&gt;
+  &lt;li&gt;awearness of global issues (and thier connection to local ones)&lt;/li&gt;
+  &lt;li&gt;social &amp;amp; communication skills&lt;/li&gt;
+  &lt;li&gt;collaborative thinking&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;mcclellands-theory-of-needs&quot;&gt;McClelland’s theory of needs&lt;/h1&gt;
+&lt;p&gt;McClelland argues humans are mainly motivated by three needs - Power, Achivement,
+Affiliation. 
+Everyone wants all these things, but most people have a primary need.
+We can group people based on their primary need and assign these groups characteristis.&lt;/p&gt;
+
+&lt;p&gt;Individuals motivated primary by their need for &lt;strong&gt;achivement&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;desire to excell in what they do&lt;/li&gt;
+  &lt;li&gt;like to set difficult goals and then meet them&lt;/li&gt;
+  &lt;li&gt;prefer to work in result-oriented environment&lt;/li&gt;
+  &lt;li&gt;want feedback on thier work&lt;/li&gt;
+  &lt;li&gt;avoid low-risk low-reard (boring) and high-risk high-reward (random) situations&lt;/li&gt;
+  &lt;li&gt;often prefer working alone&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Individuals motivated primary by thier need for &lt;strong&gt;power&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;desire to hold authority over others&lt;/li&gt;
+  &lt;li&gt;driven by reputation&lt;/li&gt;
+  &lt;li&gt;flourish in leadership positions&lt;/li&gt;
+  &lt;li&gt;are self-disciplined&lt;/li&gt;
+  &lt;li&gt;are willing to play zero-sum games&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Individuals motivated primary by &lt;strong&gt;affiliation&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;desire to be loved and accepted&lt;/li&gt;
+  &lt;li&gt;have strong relationships&lt;/li&gt;
+  &lt;li&gt;flourish when working in group&lt;/li&gt;
+  &lt;li&gt;avoid risk&lt;/li&gt;
+  &lt;li&gt;fear being rejected&lt;/li&gt;
+  &lt;li&gt;adhere to the norms&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can use this knowledge to orginise temas more effectively by leveraing strengths and
+weaknesses of your team members.&lt;/p&gt;</content><author><name>Miki Vanoušek</name><email>vanousekmikulas@gmail.com</email></author><summary type="html">Culture Acording to Edgar Schein, culture consits of layers, like onion.</summary></entry><entry><title type="html">Root With Magdisk And TWRP Without Reinstalling System And Fix Safetynet</title><link href="https://mikulasvanousek.github.io/blog/2021/09/08/root-arrow/" rel="alternate" type="text/html" title="Root With Magdisk And TWRP Without Reinstalling System And Fix Safetynet" /><published>2021-09-08T00:00:00+00:00</published><updated>2021-09-08T00:00:00+00:00</updated><id>https://mikulasvanousek.github.io/blog/2021/09/08/root-arrow</id><content type="html" xml:base="https://mikulasvanousek.github.io/blog/2021/09/08/root-arrow/">&lt;p&gt;This tutorial is meant for Arrow os on alioth (Poco F3)! On other devices the steps might be different!&lt;/p&gt;
+
+&lt;p&gt;Follow this on your own risk!&lt;/p&gt;
+
+&lt;p&gt;You need adb and fastboot installed to follow.&lt;/p&gt;
+
+&lt;p&gt;Edit 2: Location is now working as well. Everything is working.&lt;/p&gt;
+
+&lt;h1 id=&quot;root-your-system-with-magisk&quot;&gt;Root your system with magisk&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Connect your phone to your PC&lt;/li&gt;
+  &lt;li&gt;Download the &lt;a href=&quot;https://github.com/topjohnwu/Magisk/releases/tag/v23.0&quot;&gt;Magisk apk&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Make a copy of the Magisk-v##.#.apk file with .zip extension. You should now have 2 files (.apk, .zip)&lt;/li&gt;
+  &lt;li&gt;Download and flash &lt;a href=&quot;https://forum.xda-developers.com/t/recovery-unofficial-twrp-3-5-1-20210702.4300189/&quot;&gt;TWRP&lt;/a&gt; - your system is going to stay intact&lt;/li&gt;
+  &lt;li&gt;Boot to TWRP (adb reboot bootloader)&lt;/li&gt;
+  &lt;li&gt;Upload the magisk.zip file
+ adb push &lt;path to=&quot;&quot; your=&quot;&quot; magisk.zip=&quot;&quot; file=&quot;&quot;&gt; /sdcard/Download/&lt;/path&gt;&lt;/li&gt;
+  &lt;li&gt;In TWRP press first big button ‘Install’, go to Download and select 
+magisk.zip&lt;/li&gt;
+  &lt;li&gt;In the next menu check ‘Skip Digest check before installing zip’ only! UNCHECK ‘Inject TWRP after install’&lt;/li&gt;
+  &lt;li&gt;After the install, reboot to system. Install magisk.apk
+  adb install Magisk-v##.#.apk&lt;/li&gt;
+  &lt;li&gt;When you open the Magisk app, it should say ‘Installed: &lt;your version=&quot;&quot;&gt;'&lt;/your&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;fixing-safetynet-with-magdisk&quot;&gt;Fixing Safetynet with Magdisk&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Download the latest &lt;a href=&quot;https://f-droid.org/en/packages/org.fdroid.fdroid/&quot;&gt;fdroid apk&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Install it with adb&lt;/li&gt;
+  &lt;li&gt;In the F-Droid app find XPrivacyLua and install it&lt;/li&gt;
+  &lt;li&gt;Download the latest &lt;a href=&quot;https://github.com/kdrag0n/safetynet-fix/releases&quot;&gt;safetynet-fix-v#.#.#.zip&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;In the settings of Magisk app check MagiskHide&lt;/li&gt;
+  &lt;li&gt;In the Magisk app navigate to modules, ‘Install from storage’ and install the safetynet fix&lt;/li&gt;
+  &lt;li&gt;In the Magisk module search find ‘Riru’, install it &lt;strong&gt;without rebooting&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;In the same way install ‘Lsposed’, then reboot&lt;/li&gt;
+  &lt;li&gt;Open Lsposed app, click ‘Modules’ -&amp;gt; ‘XPrivacyLua’ -&amp;gt; 3 dots in top right -&amp;gt; ‘Hide’ -&amp;gt; uncheck System apps&lt;/li&gt;
+  &lt;li&gt;Now select:
+    &lt;ul&gt;
+      &lt;li&gt;System Framework&lt;/li&gt;
+      &lt;li&gt;Settings Storage&lt;/li&gt;
+      &lt;li&gt;Google Play Services&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Reboot your device&lt;/li&gt;
+  &lt;li&gt;Open XPrivacyLua app and check Google Play Services, expand the item and uncheck ‘Get Location’
+and ‘Get Sensors’&lt;/li&gt;
+  &lt;li&gt;Clear storage for Google Play Services and Google Play in Settings -&amp;gt; Apps&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Congratulations, you should now be able to pass the Safetynet.
+Please, let me know &lt;a href=&quot;https://forum.xda-developers.com/t/rom-11-0-0-alioth-aliothin-arrowos-11-0-official-weekly.4279481/post-85599629&quot;&gt;on XDA&lt;/a&gt; if it worked for you!
+This is my first contribution to this community, and I am generally curious as to how many people it might help.&lt;/p&gt;
+
+&lt;p&gt;If it did not work or, you do not understand something, also let me know and I will try to fix it…&lt;/p&gt;</content><author><name>Miki Vanoušek</name><email>vanousekmikulas@gmail.com</email></author><summary type="html">This tutorial is meant for Arrow os on alioth (Poco F3)! On other devices the steps might be different!</summary></entry><entry><title type="html">Introduction To Math And Calculus</title><link href="https://mikulasvanousek.github.io/blog/2021/09/07/imc/" rel="alternate" type="text/html" title="Introduction To Math And Calculus" /><published>2021-09-07T00:00:00+00:00</published><updated>2021-09-07T00:00:00+00:00</updated><id>https://mikulasvanousek.github.io/blog/2021/09/07/imc</id><content type="html" xml:base="https://mikulasvanousek.github.io/blog/2021/09/07/imc/">&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+&lt;h2 id=&quot;introduction-to-math&quot;&gt;Introduction To Math&lt;/h2&gt;
+
+&lt;p&gt;Introduction to Math (IM) will teach you bascis in set theory, logic, combinatorics, precise formulation of statments, logical reasonaing and construction of mathematical proofs.
+All these concepts will be vital in future courses!&lt;/p&gt;
+
+&lt;p&gt;Course plan:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;week 1 - Sets and Logic&lt;/li&gt;
+  &lt;li&gt;week 2 - Proofs&lt;/li&gt;
+  &lt;li&gt;week 3 - Combinatorics&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;By the end of the course, you should be able to:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;work with elemetary properties of sets and lgoic&lt;/li&gt;
+  &lt;li&gt;construct elemetary proofs using basic techiques&lt;/li&gt;
+  &lt;li&gt;work with elemetary properties of combinatorics&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;exam-rules&quot;&gt;Exam Rules&lt;/h2&gt;
+&lt;p&gt;There will be two midterm tests:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;IM (1h)&lt;/li&gt;
+  &lt;li&gt;Calculus (2h)
+These tests will be independet, but you should still have the prior knowledge.
+No notes and electronic devices.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In the 10th week there will be an exam from all material.&lt;/p&gt;
+
+&lt;p&gt;You will have to complete and pass a case study assignment to pass the course (there is some option to repair).&lt;/p&gt;
+
+&lt;p&gt;See &lt;a href=&quot;https://canvas.utwente.nl/courses/9008/pages/intromath-description-topics-educational-targets-examination-rules?module_item_id=257997&quot;&gt;canvas page&lt;/a&gt; for more detail.&lt;/p&gt;
+
+&lt;h1 id=&quot;sets&quot;&gt;Sets&lt;/h1&gt;
+&lt;p&gt;Set is a well-defined &lt;strong&gt;unordered&lt;/strong&gt; collection of &lt;strong&gt;distinct&lt;/strong&gt; elements.
+It is denoted within curly brcktes in one of these ways:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;list of all elemets $\{1,2,3,4,5,6\}$&lt;/li&gt;
+  &lt;li&gt;pattern $\{1,2,3…6\}$&lt;/li&gt;
+  &lt;li&gt;properties $\{ n|n \in \mathbb{N}; 1 \leq n \leq 9 \}$&lt;/li&gt;
+  &lt;li&gt;intervals $\{x \in \mathbb{R}; A \leq x &amp;lt; B \} \Leftrightarrow [A,B)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Notation:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$1$ is an element of set $S$: $1 \in S$&lt;/li&gt;
+  &lt;li&gt;$1$ is not an element of set $S$: $1 \notin S$&lt;/li&gt;
+  &lt;li&gt;$S$ owns $1$: $S \ni 1$&lt;/li&gt;
+  &lt;li&gt;$\{1, 2\}$ is a subset of $\{1,2,3\}$: $\{1,2\} \subseteq \{1,2,3\}$&lt;/li&gt;
+  &lt;li&gt;$\{1, 2\}$ is a proper subset of $\{1,2,3\}$: $\{1,2\} \subset \{1,2,3\}$&lt;/li&gt;
+  &lt;li&gt;empty set: $\emptyset$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Operations:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;set union: $\cup$&lt;/li&gt;
+  &lt;li&gt;set intersection: $\cap$&lt;/li&gt;
+  &lt;li&gt;difference (order must be given by parentheses): $\setminus$&lt;/li&gt;
+  &lt;li&gt;complement of $S$ with respect to universal set: $\overline{S} = U \setminus S$&lt;/li&gt;
+  &lt;li&gt;cardinality (the number of elements) of $S$: $|S|$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Minimum of the set: $min(S) = s \in S \leftrightarrow \forall x \in S:s \leq x$ &lt;br /&gt;
+Infimum of the set: $inf(S) = max(\{i; \forall x \in S: i \leq x\})$ &lt;br /&gt;
+Maximum of the set: $max(S) = s \in S \leftrightarrow \forall x \in S:s \geq x$ &lt;br /&gt;
+Supremum of the set: $sup(S) = min(\{s; \forall x \in S: s \geq x\})$&lt;/p&gt;
+
+&lt;p&gt;You can use membership tables to construct Venn Diagrams.&lt;/p&gt;
+
+&lt;p&gt;Summation is denoted in the following manner:&lt;/p&gt;
+
+\[1+2+3+4...n = \sum_{i=1}^n i\]
+
+&lt;p&gt;In a similiar manner, repeated union:&lt;/p&gt;
+
+\[A_1 \cup A_2 \cup A_3 \leftrightarrow \bigcup_{i=1}^3 A_i\]
+
+&lt;h2 id=&quot;sets-of-numbers&quot;&gt;Sets of numbers&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;natural numbers: $\mathbb{N}$&lt;/li&gt;
+  &lt;li&gt;integers: $\mathbb{Z}$&lt;/li&gt;
+  &lt;li&gt;rational numbers: $\mathbb{Q}$&lt;/li&gt;
+  &lt;li&gt;real numbers: $\mathbb{R}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://canvas.utwente.nl/courses/9008/pages/micro-lectures-week-1&quot;&gt;See Canvas&lt;/a&gt; for the microlectures.&lt;/p&gt;
+
+&lt;h1 id=&quot;logic&quot;&gt;Logic&lt;/h1&gt;
+&lt;p&gt;Proposition is a statement whose truth can be objectivelly determined as either ‘true’ or ‘false’.&lt;/p&gt;
+
+&lt;p&gt;Predicate is a statement that can contain variables that inflence its truth value.&lt;/p&gt;
+
+&lt;p&gt;Tautology is a statement that is always true.&lt;br /&gt;
+Contradiction is a statement that is always false.&lt;/p&gt;
+
+&lt;p&gt;Operators:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;and: $\land$&lt;/li&gt;
+  &lt;li&gt;or: $\lor$&lt;/li&gt;
+  &lt;li&gt;not: $\neg$&lt;/li&gt;
+  &lt;li&gt;implication: $\rightarrow$&lt;/li&gt;
+  &lt;li&gt;logical implication: $\Rightarrow$&lt;/li&gt;
+  &lt;li&gt;equivalence: $\leftrightarrow$&lt;/li&gt;
+  &lt;li&gt;logical equivalence: $\Leftrightarrow$&lt;/li&gt;
+  &lt;li&gt;for all: $\forall$&lt;/li&gt;
+  &lt;li&gt;exists: $\exists$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can use truth tables to determine equivalency.&lt;/p&gt;
+
+&lt;h1 id=&quot;proofs&quot;&gt;Proofs&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Lemma&lt;/strong&gt; is and intermidiary result.&lt;/p&gt;
+
+&lt;p&gt;Conditional statement $p \rightarrow q$ has converse statement $q \rightarrow p$.&lt;/p&gt;
+
+&lt;h2 id=&quot;proof-techniques&quot;&gt;Proof techniques&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;proof by example
+    &lt;ul&gt;
+      &lt;li&gt;prepositions starting with $\exists$ can be proved by an example&lt;/li&gt;
+      &lt;li&gt;prepositions starting with $\forall$ can be disproved by a counter-example&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;proof by cases&lt;/li&gt;
+  &lt;li&gt;proof by contradiction&lt;/li&gt;
+  &lt;li&gt;mathematical induction
+    &lt;ul&gt;
+      &lt;li&gt;we are proving a predicate $S(n);n\in \mathbb N$&lt;/li&gt;
+      &lt;li&gt;basis step: $S(1)$ is true&lt;/li&gt;
+      &lt;li&gt;induction hypothesis: $\exists k; S(k)$ is true&lt;/li&gt;
+      &lt;li&gt;induction step: we prove, that given induction hypothesis, $S(n+1)$ also holds&lt;/li&gt;
+      &lt;li&gt;$S(1) \land (S(n) \rightarrow S(n+1)) \Rightarrow S(n) \forall n \in \mathbb{N}$&lt;/li&gt;
+      &lt;li&gt;conclusion&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;counting&quot;&gt;Counting&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Heuristic&lt;/strong&gt; is a non-perfect model with trade off between optimality and speed.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Permutation&lt;/strong&gt; of $n$ objects is their possible ordering. The number of 
+permutations of $k$ objects out of a set of $n$ objects is 
+$P(n, k) = \frac{n!}{(n-r)!}$.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Combination&lt;/strong&gt; of $n$ distinct elements is an unordered subset of $r$ elements,
+where $0 \leq r \leq n$. It is:&lt;/p&gt;
+
+\[C(n, r) = \begin{pmatrix} n \\ r \end{pmatrix} = \frac {P(n,r)} {r!} = \frac {n!} {r!*(n-r)!}\]
+
+&lt;h2 id=&quot;sum-rule&quot;&gt;Sum Rule&lt;/h2&gt;
+&lt;p&gt;If $A$ and $B$ are finite &lt;strong&gt;disjoint&lt;/strong&gt; ($A \cap B = \emptyset$) sets, then $|A \cup B| = |A| + |B|$.&lt;/p&gt;
+
+&lt;h2 id=&quot;principle-of-of-inclusion-exclusion&quot;&gt;Principle of of inclusion exclusion&lt;/h2&gt;
+&lt;p&gt;If $A$ and $B$ are not disjoint $|A \cup B| = |A| + |B| \setminus |A \cap B|$.&lt;/p&gt;
+
+&lt;h2 id=&quot;product-rule&quot;&gt;Product Rule&lt;/h2&gt;
+&lt;p&gt;If $A$ and $B$ are finite sets there are $|A| * |B|$ pairs $(a, b); a \in A, b \in B$&lt;/p&gt;
+
+&lt;h2 id=&quot;newtons-binomial-theorem&quot;&gt;Newton’s binomial theorem&lt;/h2&gt;
+
+\[(x+y)^n = \sum_{i=0}^n \begin{pmatrix} n \\ i \end{pmatrix} x^i y^{n-i}\]</content><author><name>Miki Vanoušek</name><email>vanousekmikulas@gmail.com</email></author><summary type="html">Introduction Introduction To Math</summary></entry><entry><title type="html">Linear Structures 1</title><link href="https://mikulasvanousek.github.io/blog/2021/09/07/ls1/" rel="alternate" type="text/html" title="Linear Structures 1" /><published>2021-09-07T00:00:00+00:00</published><updated>2021-09-07T00:00:00+00:00</updated><id>https://mikulasvanousek.github.io/blog/2021/09/07/ls1</id><content type="html" xml:base="https://mikulasvanousek.github.io/blog/2021/09/07/ls1/">&lt;h1 id=&quot;pólyas-4-steps-for-problem-solving&quot;&gt;Pólya’s 4 Steps for problem-solving&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;Getting Started
+    &lt;ul&gt;
+      &lt;li&gt;state the important information and summarize the problem&lt;/li&gt;
+      &lt;li&gt;include diagram if possible&lt;/li&gt;
+      &lt;li&gt;try to note all your assumptions&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Devise Plan
+    &lt;ul&gt;
+      &lt;li&gt;before trying to solve the problem, try to break it down into smaller pieces&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Execute Plan
+    &lt;ul&gt;
+      &lt;li&gt;explain each step&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Evaluate Solution
+    &lt;ul&gt;
+      &lt;li&gt;is the solution intuitive?&lt;/li&gt;
+      &lt;li&gt;did you use all assumptions? what for?&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;linear-algebra&quot;&gt;Linear Algebra&lt;/h1&gt;
+&lt;h2 id=&quot;vector-in-mathbbrn&quot;&gt;Vector in $\mathbb{R}^n$&lt;/h2&gt;
+&lt;p&gt;They have n elements.
+They can be represented:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;row vector $u = (x_1, x_2…x_n)$&lt;/li&gt;
+  &lt;li&gt;column vector \(u = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}\)&lt;/li&gt;
+  &lt;li&gt;their geometric representation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Multidimensional vectors are used to store complex information.&lt;/p&gt;
+
+&lt;p&gt;Operations:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;addition: $u + v = (u_1 + v_1, u_2 + v_2 … u_n + v_n)$&lt;/li&gt;
+  &lt;li&gt;scalar multiplication: $tu = (tu_1 + tu_2 … tu_n)$&lt;/li&gt;
+  &lt;li&gt;is the solution intuitive?&lt;/li&gt;
+  &lt;li&gt;did you use all assumptions? what for?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;linear-algebra-1&quot;&gt;Linear Algebra&lt;/h1&gt;
+&lt;h2 id=&quot;vector-in-mathbbrn-1&quot;&gt;Vector in $\mathbb{R}^n$&lt;/h2&gt;
+&lt;p&gt;They have n elements.
+They can be represented:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;row vector $u = (x_1, x_2…x_n)$&lt;/li&gt;
+  &lt;li&gt;column vector \(u = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}\)&lt;/li&gt;
+  &lt;li&gt;their geometric representation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Multidimensional vectors are used to store complex information.&lt;/p&gt;
+
+&lt;p&gt;Operations:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;addition: $u + v = (u_1 + v_1, u_2 + v_2 … u_n + v_n)$&lt;/li&gt;
+  &lt;li&gt;is the solution intuitive?&lt;/li&gt;
+  &lt;li&gt;did you use all assumptions? what for?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;linear-algebra-2&quot;&gt;Linear Algebra&lt;/h1&gt;
+&lt;h2 id=&quot;vector-in-mathbbrn-2&quot;&gt;Vector in $\mathbb{R}^n$&lt;/h2&gt;
+&lt;p&gt;They have n elemets.
+They can be represented:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;row vector $u = (x_1, x_2…x_n)$&lt;/li&gt;
+  &lt;li&gt;column vector \(u = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}\)&lt;/li&gt;
+  &lt;li&gt;their geometric representation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Multidimensional vecotrs are used to store complex information.&lt;/p&gt;
+
+&lt;p&gt;Operations:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;addition: $u + v = (u_1 + v_1, u_2 + v_2 … u_n + v_n)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Zero vector consists of all 0.&lt;/p&gt;
+
+&lt;h2 id=&quot;matrix-in-m_mtimes-nmathbbr&quot;&gt;Matrix in $M_{m\times n}(\mathbb{R})$&lt;/h2&gt;
+&lt;p&gt;A rectangular $m \times n$ matrix $A$ consists of $m$ rows and $n$ columns.&lt;/p&gt;
+
+\[A = \begin{pmatrix} 
+ a_{11} &amp;amp; ... &amp;amp; a_{1j} &amp;amp; ... &amp;amp; a_{1n} \\
+ \vdots &amp;amp;     &amp;amp; \vdots &amp;amp;     &amp;amp; \vdots \\
+ a_{i1} &amp;amp; ... &amp;amp; a_{ij} &amp;amp; ... &amp;amp; a_{in} \\
+ \vdots &amp;amp;     &amp;amp; \vdots &amp;amp;     &amp;amp; \vdots \\
+ a_{m1} &amp;amp; ... &amp;amp; a_{mj} &amp;amp; ... &amp;amp; a_{mn} \\
+\end{pmatrix}\]
+
+&lt;p&gt;Operations:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;addition ($A$ and $B$ must have the same dimension!):&lt;/li&gt;
+&lt;/ul&gt;
+
+\[A + B = \begin{pmatrix} 
+ a_{11}+b_{11} &amp;amp; a_{12}+b_{12}  \\
+ a_{21}+b_{21} &amp;amp; a_{22}+b_{22}  \\
+\end{pmatrix}\]
+
+&lt;ul&gt;
+  &lt;li&gt;scalar multiplications:&lt;/li&gt;
+&lt;/ul&gt;
+
+\[xA =
+\begin{pmatrix}
+ xa_{11} &amp;amp; xa_{12} \\
+ xa_{21} &amp;amp; xa_{22} \\
+\end{pmatrix}\]
+
+&lt;ul&gt;
+  &lt;li&gt;transpose $m \times n$ matrix $A$&lt;/li&gt;
+&lt;/ul&gt;
+
+\[(A^t)_{ij} = A_{ji}\]
+
+&lt;ul&gt;
+  &lt;li&gt;(aA + bB)^T = aA^t + bB^t&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Symmetric matrix&lt;/strong&gt; is a matrix A such that $A^t = A \Leftrightarrow A_{ij} = A_{ji}$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Diagonal matrix&lt;/strong&gt; is a matrix where $A_{ij} = 0 \forall i \neq j$&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Trace&lt;/strong&gt; of an $n \times n$ matrix $A$: $tr(A) = \sum_{i=1}^n A_{ii}$&lt;/p&gt;
+
+&lt;h2 id=&quot;fields&quot;&gt;Fields&lt;/h2&gt;
+&lt;p&gt;Field is a set for which addition and multiplication are defined, so that for:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$\forall x,y \in F: x+y \in F, xy \in F$&lt;/li&gt;
+  &lt;li&gt;$\forall a,b,c \in S$ all the the following properties must hold:
+    &lt;ol&gt;
+      &lt;li&gt;commutativity of A,M: &lt;br /&gt;
+ $a+b = b+a$ and $a \cdot b = b \cdot a$&lt;/li&gt;
+      &lt;li&gt;associativity of addition, multiplication (A,M): 
+ $(a+b) +c = a+(b+c)$ and $(ab)c = a(bc)$&lt;/li&gt;
+      &lt;li&gt;identity A,M:&lt;br /&gt;
+ $a+0 = a$ and $1a=a$&lt;/li&gt;
+      &lt;li&gt;inverse of A,M:&lt;br /&gt;
+ $a+(-a)=0$ and $\forall a \neq 0 \exists aa^{-1}=1$&lt;/li&gt;
+      &lt;li&gt;distributivity of multiplication over adition: 
+ $a(b+c) = ab + ac$&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;polynomials-in-p_nmathbb-r&quot;&gt;Polynomials in $P_n(\mathbb R)$&lt;/h2&gt;
+&lt;p&gt;A polynomail of degree $n$ with coefficients $a_0, a_1 … + a_n \in \mathbb R$:&lt;/p&gt;
+
+&lt;p&gt;\(f(x) = a_n x^n + a_{n-1} x^{n-1} ... a_0\)
+\(a \neq 0\)&lt;/p&gt;
+
+&lt;p&gt;Degree of $0$ is $-1$.&lt;/p&gt;
+
+&lt;p&gt;Set of all polynomials is a vector space.&lt;/p&gt;
+
+&lt;h2 id=&quot;vector-spaces&quot;&gt;Vector spaces&lt;/h2&gt;
+&lt;p&gt;A vector space (VS) is made up of a set $V$ over field $F$ and 2 operations:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;vector addition (VA): $\forall u, v \in V: u+v \in V$&lt;/li&gt;
+  &lt;li&gt;scalar multiplication (SM): $\forall u \in V: c\in F, cu \in V$&lt;br /&gt;
+We say $V$ is closed with respekt to VA and SM.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;All of the following properties must hold $\forall u,v,w \in V; a,b\in F$:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;commutativity of VA:&lt;br /&gt;
+  $u+v = v+u$&lt;/li&gt;
+  &lt;li&gt;associativity of VA:&lt;br /&gt;
+  $u +(v+w) = (u+v)+w$&lt;/li&gt;
+  &lt;li&gt;identity element of VA:&lt;br /&gt;
+  $0 + v=v$&lt;/li&gt;
+  &lt;li&gt;inverse element of VA:&lt;br /&gt;
+  $v + (-v) = 0$&lt;/li&gt;
+  &lt;li&gt;compatibility of SM with field multiplication:&lt;br /&gt;
+  $a(bv) = (ab)v$&lt;/li&gt;
+  &lt;li&gt;identity element of SM:&lt;br /&gt;
+  $1v=v$&lt;/li&gt;
+  &lt;li&gt;distributivity of SM with respect ot VA:&lt;br /&gt;
+  $a(u+w) = au + av$&lt;/li&gt;
+  &lt;li&gt;distributivity of SM with respect to field addition:&lt;br /&gt;
+  $(a+b)u = au + bu$&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;subspaces&quot;&gt;Subspaces&lt;/h2&gt;
+&lt;p&gt;If $V$ is a VS over $F$, $W \subset V$ is a subspace if $W$ is a VS with VA and SM defined
+as in $V$.
+These conditions must hold $\forall x, y \in W, c \in F:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;a.  $0 \in W$&lt;/li&gt;
+  &lt;li&gt;b. $x+y \in W$&lt;/li&gt;
+  &lt;li&gt;c. $ cx \in W$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;linear-systems&quot;&gt;Linear systems&lt;/h2&gt;
+&lt;p&gt;You can represent systems of $n$ linear equations with $n$ variables as a $n\times
+n$ matrix:&lt;/p&gt;
+
+\[\begin{array}{c c c}
+1a_1 &amp;amp;+3a_2 &amp;amp;-5a_3 &amp;amp;=1\\
+0a_1 &amp;amp;+1a_2 &amp;amp;+2a_3 &amp;amp;=0\\
+4a_1 &amp;amp;-3a_2 &amp;amp;-5a_3 &amp;amp;=2\\
+\end{array}
+\qquad
+\begin{bmatrix}
+1 &amp;amp; 2 &amp;amp; 5 &amp;amp; 1\\
+0 &amp;amp; 1 &amp;amp; 2 &amp;amp; 0\\
+4 &amp;amp;-3 &amp;amp;-5 &amp;amp; 2\\
+\end{bmatrix}\]
+
+&lt;p&gt;Elementary operations (the solution of the linear system represented by the matrix does not change):&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;interchange&lt;/strong&gt; 2 rows&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;multiply&lt;/strong&gt; a row by non-zero value&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;replace&lt;/strong&gt; a row with sum of itself and a multiple of another row&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;gausian-elimination&quot;&gt;Gausian elimination&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;in the leftmost non-zero column pick a pivot $p$&lt;/li&gt;
+  &lt;li&gt;place row where the pivot is in the upper-most position that did not have a pivot yet&lt;/li&gt;
+  &lt;li&gt;multiply the row by $\frac 1 p$ so the pivot becomes $1$&lt;/li&gt;
+  &lt;li&gt;use pivot to eliminate all entries in this column other than itself&lt;/li&gt;
+  &lt;li&gt;repeat until you run out of pivots&lt;br /&gt;
+ We are left with a &lt;strong&gt;cannonical form&lt;/strong&gt; of a matrix (staircase form).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;linear-combination-of-vectors&quot;&gt;Linear combination of vectors&lt;/h2&gt;
+&lt;p&gt;Let $V$ be a VS over $F$ and $S \subset V$. Then $v \in V$ is a linear combination of vectors in S, if:&lt;/p&gt;
+
+\[\exists u_1, u_2 ... u_n \in S; a_1, a_2 ... a_n \in F: \sum_{i=1}^n a_i u_i = v\]
+
+&lt;p&gt;The equation of a plane through noncollinear points $A,B,C$: $x = A + s(B \setminus A) + t(C \setminus A); s, t \in \mathbb R$&lt;/p&gt;
+
+&lt;p&gt;In the special case when $A$ is zero (the plane is subspace of $R^3$): $x = sB + rC&lt;/p&gt;
+
+&lt;h3 id=&quot;span&quot;&gt;Span&lt;/h3&gt;
+&lt;p&gt;Let $V$ be VS over $F$, $S \neq \emptyset, S \subseteq V$. Then span of $S$ denoted $span(S)$ is
+the set of all linear combinations of the vectors in $S$.&lt;/p&gt;
+
+&lt;p&gt;By convention: $span(\emptyset) = \{0\}$&lt;/p&gt;
+
+&lt;p&gt;If $span(S)=P$ we say &lt;strong&gt;$S$ generates $P$&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;linear-dependence&quot;&gt;Linear dependence&lt;/h2&gt;
+&lt;p&gt;Subset $S = \{u_1…u_n\}$ of VS $V$ is called linearly dependent
+if there exist scalars $a_1 … a_n$ &lt;strong&gt;not all zero&lt;/strong&gt; such that:
+$\sum a_i u_i = 0$.
+This is equivalent to one of the vectors being a linear combination of the others.&lt;/p&gt;
+
+&lt;p&gt;Trivial representation of 0: $0 = \sum 0u_i$&lt;/p&gt;
+
+&lt;p&gt;Nontrivial representation of zero implies linear dependence.&lt;/p&gt;
+
+&lt;p&gt;If $0 \in S$, $S$ is linearly dependent.&lt;/p&gt;
+
+&lt;p&gt;If subset is not linearly dependent, it is linearly independent (trivial representation of zero is the only representation.
+In any VS $\emptyset$ and $\{u\}$ are linearly independent.&lt;/p&gt;
+
+&lt;p&gt;If no proper subset of $S$ generates $S$, it must be linearly independent.&lt;/p&gt;
+
+&lt;h2 id=&quot;bases-and-dimension&quot;&gt;Bases and dimension&lt;/h2&gt;
+&lt;p&gt;If $S$ generates subspace $W$ and no subset of $S$ generates $W$,
+then $S$ must be linearly independent. Every vector in $W$ can be represented as exactly one linear combination of vectors in $S$.&lt;/p&gt;
+
+&lt;p&gt;A basis $\beta$ of $V$ is a linearly independent set of vectors that generates V.&lt;/p&gt;
+
+&lt;p&gt;In $F^n$ the set of vectors $(1, 0…0), (0,1..0) … (0,0…1)$ is called standard basis.&lt;/p&gt;
+
+&lt;p&gt;In $P_n(F)$ we call $\{1, x, x^2…x^n\}$ the standard basis.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-replacement-theorem&quot;&gt;The Replacement Theorem&lt;/h3&gt;
+&lt;p&gt;Let $V$ be a VS generated by a set $G$ containing 
+ exactly $n$ vectors, and let $L$ be a linearly independent 
+ subset of $V$ containing exactly $m$ vectors. Then $m \leq n$
+ and there exsist $H \subseteq G$ containing exactly $n-m$ vecotors
+ such that $L \cup H$ generates $V$.&lt;/p&gt;
+
+&lt;h4 id=&quot;corollaries&quot;&gt;Corollaries&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Let $V$ be a vecotr space having a finite basis. 
+ Then every basis has the same number of vectors.
+    &lt;ul&gt;
+      &lt;li&gt;If the number of vectos in basis is finite, we call
+VS &lt;strong&gt;finite-dimensional&lt;/strong&gt;. We call it &lt;strong&gt;infinite-dimensional&lt;/strong&gt;
+if it does not have finite basis.&lt;/li&gt;
+      &lt;li&gt;The number of vectors in each basis of a finite-dimensional VS
+$V$ is called &lt;strong&gt;dimension&lt;/strong&gt; and is denoted by $dim(V)$.
+        &lt;ul&gt;
+          &lt;li&gt;$dim(\{0\})=0$&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Let $V$ be a VS with dimension $n$:
+    &lt;ul&gt;
+      &lt;li&gt;Any generating set for V contains at least $n$ vectors 
+and generating set for $v$ that contains exactly $n$ vectors 
+is a basis for $V$.&lt;/li&gt;
+      &lt;li&gt;Any linearly independent subset of $V$ that contains 
+exaclty $n$ vectos is a basis for $V$&lt;/li&gt;
+      &lt;li&gt;Any linearly independent subset of $V$ can be extended to 
+a basis for $V$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;other-theorems&quot;&gt;Other theorems&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Let $V$ be a VS and $\beta \subseteq V$. 
+ Then $\beta$ is a basis for V if on only if 
+ each $v\in V$ can be uniquely expressed as 
+ a linear combination of vectors of $\beta$.&lt;/li&gt;
+  &lt;li&gt;If a VS $V$ is generated by finite set $S$, 
+ then some subset of $S$ is a basis for $V$.&lt;/li&gt;
+  &lt;li&gt;Let $W$ be s subspace for finite dimensional VS $V$. 
+ Then $dim(W) \leq dim(V)$ And $dim(V) = dim(W) \Leftrightarrow V = W$
+    &lt;ul&gt;
+      &lt;li&gt;Any basis for $W$ can be extended to basis for $V$.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Miki Vanoušek</name><email>vanousekmikulas@gmail.com</email></author><summary type="html">Pólya’s 4 Steps for problem-solving Getting Started state the important information and summarize the problem include diagram if possible try to note all your assumptions Devise Plan before trying to solve the problem, try to break it down into smaller pieces Execute Plan explain each step Evaluate Solution is the solution intuitive? did you use all assumptions? what for?</summary></entry><entry><title type="html">Pearls Of Computer Science</title><link href="https://mikulasvanousek.github.io/blog/2021/09/01/pearls-intro/" rel="alternate" type="text/html" title="Pearls Of Computer Science" /><published>2021-09-01T00:00:00+00:00</published><updated>2021-09-01T00:00:00+00:00</updated><id>https://mikulasvanousek.github.io/blog/2021/09/01/pearls-intro</id><content type="html" xml:base="https://mikulasvanousek.github.io/blog/2021/09/01/pearls-intro/">&lt;p&gt;This module covers a bit of everything - everyone learns something new.&lt;/p&gt;
+
+&lt;p&gt;8 pearls:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;black: computer architecutre&lt;/li&gt;
+  &lt;li&gt;blue: algorythgms&lt;/li&gt;
+  &lt;li&gt;green: databases&lt;/li&gt;
+  &lt;li&gt;cyan: functional programming&lt;/li&gt;
+  &lt;li&gt;red: cryptography&lt;/li&gt;
+  &lt;li&gt;magenta: networks &amp;amp; OSs&lt;/li&gt;
+  &lt;li&gt;yellow: intelligent interations&lt;/li&gt;
+  &lt;li&gt;white: requiremts engineering&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These pears will be accompanied by academic skills &amp;amp; math.&lt;/p&gt;
+
+&lt;p&gt;There will be a project at the end.&lt;/p&gt;
+
+&lt;p&gt;Every pearl is teached by a different teacher. 
+Module coordinators will be present throut the whole modue. (eemcs@utwnte.nl)&lt;/p&gt;
+
+&lt;p&gt;There will be 80 teaching assistants (TAs), who will help the 400+ students. You can become TA next year, if you score 8.5+.&lt;/p&gt;
+
+&lt;p&gt;Who to ask:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Only contact module coordinator if you have a problem with the module as a whole.&lt;/li&gt;
+  &lt;li&gt;With great personal matters (a lot of absence) contact the teaching advisor.&lt;/li&gt;
+  &lt;li&gt;Small personal metters (more than one day of absence) can be hadeled by housemaster.&lt;/li&gt;
+  &lt;li&gt;If you don’t understand the material, ask the teacher during lecture or Q&amp;amp;A.&lt;/li&gt;
+  &lt;li&gt;With technical problems and excercise issues approach TAs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The math part is completly seperate.&lt;/p&gt;
+
+&lt;p&gt;Academic skills is part of PCS canvas page and runs through more modules.&lt;/p&gt;
+
+&lt;p&gt;Module guide is the main reading material. A new chapter will be published every week. Always read it before asking questinos!&lt;/p&gt;
+
+&lt;p&gt;Some excercies need to be singed-off by a TA. Some assignments need to be submitted (uploaded to canvas). The pearl assignment can give you a bonus point.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;your pearl greade = test grade + bonus point You need to hit 5.5 on your project to pass. You need all tests to be above 5.0, all but two at 5.5 or higher and the weighted avarage to be 5.5 or higer to pass the module. 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can retake up to 3 tests and remake excercieses during week 10.&lt;/p&gt;
+
+&lt;p&gt;You may never publish or share your code with anyone. Talking about assignments is fine, but never send code!&lt;/p&gt;
+
+&lt;p&gt;In a processor, elements (memorry, adders, multipliers…) are made out of logic gates (transistors).
+If we have a cuircit with multiple arithmetic operators and the ability to swith between them, it iscalled ALU - arithmetic logic unit.&lt;/p&gt;
+
+&lt;p&gt;The data is coming from:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;registers (small, fast)&lt;/li&gt;
+  &lt;li&gt;memory (large, slow)&lt;/li&gt;
+  &lt;li&gt;outside world&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Flip flop is the smallest memory element avalible.
+&lt;img src=&quot;flip-flop.png&quot; alt=&quot;flip-flop&quot; /&gt;&lt;/p&gt;</content><author><name>Miki Vanoušek</name><email>vanousekmikulas@gmail.com</email></author><summary type="html">This module covers a bit of everything - everyone learns something new.</summary></entry></feed>
