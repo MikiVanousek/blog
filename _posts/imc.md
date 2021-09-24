@@ -38,7 +38,7 @@ It is denoted within curly brcktes in one of these ways:
  - list of all elemets $\\{1,2,3,4,5,6\\}$
  - pattern $\\{1,2,3...6\\}$
  - properties $\\{ n\|n \in \mathbb{N}; 1 \leq n \leq 9 \\}$
- - intervals $\\{x \in \mathbb{R}; A \leq x < B \\} \leftrightarrow [A,B)$
+ - intervals $\\{x \in \mathbb{R}; A \leq x < B \\} \Leftrightarrow [A,B)$
 
 Notation:
  - $1$ is an element of set $S$: $1 \in S$
@@ -56,11 +56,8 @@ Operations:
  - cardinality (the number of elements) of $S$: $\|S\|$
 
 Minimum of the set: $min(S) = s \in S \leftrightarrow \forall x \in S:s \leq x$   
-
 Infimum of the set: $inf(S) = max(\\{i; \forall x \in S: i \leq x\\})$   
-
 Maximum of the set: $max(S) = s \in S \leftrightarrow \forall x \in S:s \geq x$   
-
 Supremum of the set: $sup(S) = min(\\{s; \forall x \in S: s \geq x\\})$   
 
 You can use membership tables to construct Venn Diagrams.
